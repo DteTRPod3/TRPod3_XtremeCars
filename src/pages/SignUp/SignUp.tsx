@@ -28,7 +28,7 @@ const SignUp = () => {
         <div className="signup-form">
           <form onSubmit={handleSubmit} autoComplete="false">
             <div className="signup-form-element">
-              <label htmlFor="">Name</label>
+              <label htmlFor="name">Name</label>
               <input
                 onChange={handleChange}
                 type="text"
@@ -50,7 +50,7 @@ const SignUp = () => {
               />
             </div>
             <div className="signup-form-element">
-              <label htmlFor="">Address</label>
+              <label htmlFor="address">Address</label>
               <input
                 onChange={handleChange}
                 type="text"
@@ -61,7 +61,7 @@ const SignUp = () => {
               />
             </div>
             <div className="signup-form-element">
-              <label htmlFor="">PinCode</label>
+              <label htmlFor="pincode">PinCode</label>
               <input
                 onChange={handleChange}
                 type="text"
@@ -83,7 +83,7 @@ const SignUp = () => {
               />
             </div>
             <div className="signup-form-element">
-              <label htmlFor="">Password</label>
+              <label htmlFor="password">Password</label>
               <input
                 onChange={handleChange}
                 name="password"
