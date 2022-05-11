@@ -13,7 +13,7 @@
 
     &:hover {
       text-decoration: underline;
-      transform: scale(2);
+      transform: scale(1.2);
     }
   }
 }
@@ -23,6 +23,10 @@
   align-items: center;
   flex-wrap: wrap;
   float: left;
+  &:hover {
+    transform: scale(1.2);
+    text-decoration: underline;
+  }
 }
 
 .nav-bar-car-btn-group {
@@ -33,6 +37,11 @@
 
   .nav-bar-car-link {
     margin-right: 1rem;
+
+    &:hover {
+      transform: scale(1.2);
+      text-decoration: underline;
+    }
   }
 }
 
@@ -44,6 +53,9 @@
 .nav-bar-cart-img {
   vertical-align: middle;
   width: 2rem;
+  &:hover {
+    transform: scale(1.2);
+  }
 }
 
 .nav-bar-right {
