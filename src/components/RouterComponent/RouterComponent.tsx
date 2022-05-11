@@ -8,7 +8,7 @@ function RouterComponent() {
     <div>
       <Routes>
         <Route path="/" element={<CarList />}></Route>
-        <Route path="/comparecars" element={<CompareCars />}></Route>
+        <Route path="/compare-cars" element={<CompareCars />}></Route>
       </Routes>
     </div>
   );

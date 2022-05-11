@@ -4,30 +4,30 @@ import "./CompareCard.scss";
 function CompareCard() {
   return (
     <>
-      <section>
+      <header>
         <h3>Car Name here</h3>
-      </section>
-      <section>
+      </header>
+      <div>
         <p>Fuel Type here</p>
-      </section>
-      <section>
+      </div>
+      <div>
         <p>Engine</p>
-      </section>
-      <section>
+      </div>
+      <div>
         <p>Torque</p>
-      </section>
-      <section>
+      </div>
+      <div>
         <p>Acceleration</p>
-      </section>
-      <section>
+      </div>
+      <div>
         <p>Top Speed</p>
-      </section>
-      <section>
+      </div>
+      <div>
         <p>On Road Price</p>
-      </section>
-      <section>
+      </div>
+      <div>
           <button>Remove</button>
-      </section>
+      </div>
     </>
   );
 }
