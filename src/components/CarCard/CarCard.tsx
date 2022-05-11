@@ -1,9 +1,8 @@
 import React from "react";
 import "./CarCard.scss";
 import rightarrow from "../../assets/rightArrow.svg";
-import { IcarData } from "../../models/ICarData";
 
-const CarCard = (carData: IcarData) => {
+const CarCard = (carData: any) => {
   return (
     <div className="car-card-main">
       <img className="car-card-car-image" src={carData.img} alt="car-img" />
