@@ -1,0 +1,14 @@
+.car-card-car-image {
+  max-height: 15rem;
+  max-width: 20rem;
+}
+
+.car-card-data {
+  display: flex;
+  justify-content: space-around;
+}
+
+.car-card-main {
+  width: fit-content;
+  display: inline-block;
+}
