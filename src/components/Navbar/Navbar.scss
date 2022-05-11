@@ -1,0 +1,68 @@
+.nav-bar-main {
+  background-color: black;
+  padding: 1rem;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+
+  a {
+    color: aliceblue;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      transform: scale(1.2);
+    }
+  }
+}
+
+.nav-bar-logo {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  float: left;
+  &:hover {
+    transform: scale(1.2);
+    text-decoration: underline;
+  }
+}
+
+.nav-bar-car-btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .nav-bar-car-link {
+    margin-right: 1rem;
+
+    &:hover {
+      transform: scale(1.2);
+      text-decoration: underline;
+    }
+  }
+}
+
+.nav-bar-profile-img {
+  vertical-align: middle;
+  width: 2rem;
+}
+
+.nav-bar-cart-img {
+  vertical-align: middle;
+  width: 2rem;
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.nav-bar-right {
+  display: flex;
+  justify-content: space-between;
+
+  .cart-div {
+    padding-right: 1.5rem;
+  }
+}
