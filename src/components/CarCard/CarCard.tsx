@@ -6,11 +6,7 @@ import { IcarData } from "../../models/ICarData";
 const CarCard = (carData: IcarData) => {
   return (
     <div className="car-card-main">
-      <img
-        className="car-card-car-image"
-        src="https://cdn.shopify.com/s/files/1/1888/4399/files/hyundai-480x321.jpg?v=1604474915"
-        alt="car-img"
-      />
+      <img className="car-card-car-image" src={carData.img} alt="car-img" />
       <div className="car-card-data">
         <div>
           <h6> {carData.name}</h6>
