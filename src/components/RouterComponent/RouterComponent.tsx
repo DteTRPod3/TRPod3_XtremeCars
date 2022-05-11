@@ -7,7 +7,6 @@ function RouterComponent() {
     <div>
       <Routes>
         <Route path="/" element={<CarList />}></Route>
-        {/* <Route path="/" element={<Navigate to="/home" />} /> */}
       </Routes>
     </div>
   );

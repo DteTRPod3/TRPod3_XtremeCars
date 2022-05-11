@@ -1,9 +1,7 @@
-import { LoginStatus } from "../../models/LoginStatus";
-
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: { authenticated: LoginStatus } = {
-  authenticated: LoginStatus.LoggedOut,
+const initialState: { authenticated: number } = {
+  authenticated: 0,
 };
 
 export const AuthenticationSlice = createSlice({
@@ -12,9 +10,7 @@ export const AuthenticationSlice = createSlice({
   reducers: {
     authentication: (state = initialState, action: any) => {
       const authenticated =
-        action.payload.password === "L#(qc{f}TaJu4%4k"
-          ? LoginStatus.LoginSuccess
-          : LoginStatus.LoginFailed;
+        action.payload.password === "L#(qc{f}TaJu4%4k" ? 1 : 2;
       return { ...state, authenticated };
     },
   },
