@@ -10,16 +10,16 @@ const CarCard = (carData: IcarData) => {
       <div className="car-card-data">
         <div>
           <h6> {carData.name}</h6>
-          <p>{carData.price} kh onwards</p>
+          <p>{carData.price} akh onwards</p>
         </div>
         <div>
           <img src={rightarrow} alt="detail" />
         </div>
       </div>
       <div className="car-card-btn-group">
-        <button>Add to cart</button>
-        <button> Add to compare</button>
-        <button> Add to wishlist</button>
+        <button className="car-card-btn">Add to cart</button>
+        <button className="car-card-btn"> Add to compare</button>
+        <button className="car-card-btn"> Add to wishlist</button>
       </div>
     </div>
   );
