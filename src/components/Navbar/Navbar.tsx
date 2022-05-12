@@ -4,9 +4,13 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import loggedProfile from "../../assets/man.png";
 import cartImage from "../../assets/cartImage.svg";
+import WishListIcon from "../../assets/WishlistIcon.png";
 import UnknownProfile from "../../assets/profile.svg";
 import "./Navbar.scss";
 const Navbar = () => {
+  const WishCars = useSelector((state: any) => state.wishListReducer.wishCars);
+
+  const WishCarsCount = WishCars?.length;
   const isLoggedin = true;
   let profilepicture;
 
@@ -38,6 +42,17 @@ const Navbar = () => {
       </div>
 
       <div className="nav-bar-right">
+        <div className="cart-div">
+          <NavLink to="/Wishlist">
+            <img
+              className="nav-bar-cart-img"
+              src={WishListIcon}
+              alt="wishList"
+            />
+            {WishCarsCount}
+          </NavLink>
+        </div>
+
         <div className="cart-div">
           <NavLink to="/cart">
             <img className="nav-bar-cart-img" src={cartImage} alt="cart" />

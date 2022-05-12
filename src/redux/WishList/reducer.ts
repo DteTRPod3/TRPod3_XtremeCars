@@ -10,10 +10,12 @@ export const WishListSlice = createSlice({
   name: "WishList",
   initialState,
   reducers: {
-    wishlist: (state, action: any) => {
-      const newCarDetails = action.payload;
-
-      state.wishCars = [...state.wishCars, newCarDetails];
+    wishlist: (state, action: PayloadAction<{ carData: CarDetails }>) => {
+      const newCarDetails = action.payload.carData;
+      const uniqueArray = state.wishCars.filter(function (item) {
+        return state.wishCars.find(() => item.id !== newCarDetails.id);
+      });
+      state.wishCars = [...uniqueArray, newCarDetails];
     },
   },
 });
