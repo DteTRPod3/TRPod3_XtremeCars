@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import CompareCard from "../../components/CompareCard/CompareCard";
+import { addToCompare } from "../../redux/CompareCars/CompareCarsSlice";
+import { getRequest } from "../../components/Api/ApiCall";
 import "./CompareCars.scss";
+import {
+  fetchCarDetailsErrorState,
+  fetchCarDetailsGetData,
+  fetchCarDetailsLoadState,
+} from "../../redux/CompareCarsDetails/CompareCarsDetailsSlice";
 
 function CompareCars() {
   const length = 2;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const compareCars = useSelector((state: any) => {
+      return state.CompareCarReducer.carsIds;
+    });
+    compareCars.forEach((cid: any) => {
+      const url = `http://localhost:8080/cars/details/${cid}`;
+      getRequest(url)
+        .then((response) => {
+          dispatch(fetchCarDetailsGetData({ carDetail: response }));
+        })
+        .catch((error) => {
+          dispatch(fetchCarDetailsErrorState({ error: "Error" }));
+        });
+    });
+  }, []);
+
   return (
     <>
       <main className="compare-cars-container">
@@ -32,22 +57,22 @@ function CompareCars() {
         </section>
         {length < 1 && (
           <section className="compare-cars-car1-column compare-cars-column">
-              <a>Go to Home Page to add car</a>
+            <a>Go to Home Page to add car</a>
           </section>
         )}
         {length >= 1 && (
           <section className="compare-cars-car1-column compare-cars-column">
-              <CompareCard />
+            <CompareCard />
           </section>
         )}
         {length < 2 && (
           <section className="compare-cars-car1-column compare-cars-column">
-              <a>Go to Home Page to add car</a>
+            <a>Go to Home Page to add car</a>
           </section>
         )}
         {length >= 2 && (
           <section className="compare-cars-car1-column compare-cars-column">
-              <CompareCard />
+            <CompareCard />
           </section>
         )}
       </main>
