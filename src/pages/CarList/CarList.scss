@@ -1,4 +1,16 @@
 .car-list-btn-group {
     display: flex;
-    gap: 2rem;
+}
+
+.car-list-tab-search {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+}
+
+.car-list-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
 }
