@@ -4,6 +4,7 @@ import { compose } from "redux";
 import authenticationreducer from "./Authentication/reducer";
 import comparecarreducer from "./CompareCars/CompareCarsSlice"
 import comparecardetailslice from "./CompareCarsDetails/CompareCarsDetailsSlice"
+import  carsListSlice from './CarsList/reducer';
 
 declare global {
   interface Window {
@@ -17,6 +18,7 @@ export const store = configureStore({
   reducer: { 
     AuthenticationReducer: authenticationreducer,
     CompareCarReducer: comparecarreducer,
-    CompareCarsDetailsSlice:comparecardetailslice
+    CompareCarsDetailsSlice:comparecardetailslice,
+    carsListReducer: carsListSlice
   },
 });
