@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CompareCard from "../../components/CompareCard/CompareCard";
 import { addToCompare } from "../../redux/CompareCars/CompareCarsSlice";
-import { getRequest } from "../../components/Api/ApiCall";
+import { getRequest } from "../../requests/apiRequest";
 import "./CompareCars.scss";
 import {
   fetchCarDetailsErrorState,
@@ -13,10 +13,10 @@ import {
 function CompareCars() {
   const length = 2;
   const dispatch = useDispatch();
+  const compareCars = useSelector((state: any) => {
+    return state.CompareCarReducer.carsIds;
+  });
   useEffect(() => {
-    const compareCars = useSelector((state: any) => {
-      return state.CompareCarReducer.carsIds;
-    });
     compareCars.forEach((cid: any) => {
       const url = `http://localhost:8080/cars/details/${cid}`;
       getRequest(url)
