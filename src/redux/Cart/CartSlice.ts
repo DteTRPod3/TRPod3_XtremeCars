@@ -11,7 +11,7 @@ interface cartStatus {
 
 const initialState: cartStatus = {
   items: [],
-  totalCount: 4,
+  totalCount: 0,
 };
 
 const removeItemFromCart = (state: any, action: any) => {
