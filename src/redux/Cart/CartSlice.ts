@@ -1,6 +1,5 @@
 import { IcarData } from "./../../models/ICarData";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { WritableDraft } from "immer/dist/internal";
 
 interface cartStatus {
   items: {
