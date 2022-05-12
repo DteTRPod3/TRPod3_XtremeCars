@@ -100,7 +100,7 @@ const CarList = (): JSX.Element => {
                 setSearchStr(event.target.value)
               }
             />
-            <input type="submit" value="Submit" />
+            <button type="button">Search</button>
           </form>
         </div>
       </div>

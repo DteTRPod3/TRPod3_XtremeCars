@@ -17,9 +17,9 @@ const CarCard = (props: {carData: CarDetails}) => {
         </div>
       </div>
       <div className="car-card-btn-group">
-        <button>Add to cart</button>
-        <button> Add to compare</button>
-        <button> Add to wishlist</button>
+        <button className="car-card-btn">Add to cart</button>
+        <button className="car-card-btn"> Add to compare</button>
+        <button className="car-card-btn"> Add to wishlist</button>
       </div>
     </div>
   );
