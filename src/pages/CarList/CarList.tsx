@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { API_URL } from "../../constants";
 import { useQuery } from "../../hooks/useQuery";
-import { updateCars } from "../../redux/CarsList/reducer";
-import { request } from "../../requests/request";
+import { updateCars, updateErrorState, updateLoadState } from "../../redux/CarsList/reducer";
+import { getRequest } from "../../requests/apiRequest";
 import "./CarList.scss";
 
 enum CarType {
@@ -41,9 +41,12 @@ const CarList = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
-    const carsData = request(`${API_URL}cars/${selectedCarType}?search=${searchStr}`);
+    dispatch(updateLoadState());
+    const carsData = getRequest(`${API_URL}cars/${selectedCarType}?search=${searchStr}`);
     carsData.then(data => {
       dispatch(updateCars({replaceCars: data}));
+    }).catch(err => {
+      dispatch(updateErrorState({error: err}));
     });
   }, [selectedCarType, searchStr]);
 

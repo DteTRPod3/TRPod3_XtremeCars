@@ -1,6 +1,6 @@
 import { PASSWORD, USERNAME } from "../constants";
 
-export function request(url: string): Promise<any> {
+export function getRequest(url: string): Promise<any> {
     return fetch(url, {
         method: "GET",
         headers: {
