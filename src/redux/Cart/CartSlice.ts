@@ -1,5 +1,6 @@
 import { IcarData } from "./../../models/ICarData";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { WritableDraft } from "immer/dist/internal";
 
 interface cartStatus {
   items: {
@@ -11,7 +12,25 @@ interface cartStatus {
 
 const initialState: cartStatus = {
   items: [],
-  totalCount: 0,
+  totalCount: 4,
+};
+
+const removeItemFromCart = (state: any, action: any) => {
+  state.items = state.items.filter(
+    (item: any) => item.item.id !== action.payload.id
+  );
+};
+
+const addItemToCart = (state: any, action: any) => {
+  const matchingItemInCart = state.items.find(
+    (item: any) => item.item.id === action.payload.id
+  );
+  state.totalCount = state.totalCount + 1;
+  if (matchingItemInCart !== undefined) {
+    matchingItemInCart.quantity += 1;
+    return;
+  }
+  state.items.push({ item: action.payload, quantity: 1 });
 };
 
 export const CartSlice = createSlice({
@@ -19,48 +38,29 @@ export const CartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<IcarData>) => {
-      let itemExists = false;
-      if (state.items.length > 0) {
-        state.items.forEach((element) => {
-          if (element.item.id === action.payload.id) {
-            itemExists = true;
-            element.quantity += 1;
-          }
-        });
-      }
-      if (!itemExists) {
-        state.items.push({ item: action.payload, quantity: 1 });
-      }
-      state.totalCount = state.totalCount + 1;
+      addItemToCart(state, action);
     },
     increaseQuantity: (state, action: PayloadAction<IcarData>) => {
-      state.items.find(
-        (item) => item.item.id === action.payload.id
-      )!.quantity += 1;
-      state.totalCount += 1;
+      addItemToCart(state, action);
     },
     decreaseQuantity: (state, action: PayloadAction<IcarData>) => {
-      const qty = state.items.find((item) => item.item.id === action.payload.id)
-        ?.quantity!;
-      if (qty > 1) {
-        state.items.find(
-          (item) => item.item.id === action.payload.id
-        )!.quantity -= 1;
+      const matchingItemInCart = state.items.find(
+        (item) => item.item.id === action.payload.id
+      );
+
+      if (matchingItemInCart !== undefined && matchingItemInCart.quantity > 1) {
+        matchingItemInCart.quantity -= 1;
       } else {
-        state.items = state.items.filter(
-          (item) => item.item.id !== action.payload.id
-        );
+        removeItemFromCart(state, action);
       }
       state.totalCount -= 1;
     },
     removeFromCart: (state, action: PayloadAction<IcarData>) => {
-      const qty = state.items.find(
+      const matchingItemInCart = state.items.find(
         (item) => item.item.id === action.payload.id
-      )?.quantity;
-      state.totalCount -= qty!;
-      state.items = state.items.filter(
-        (item) => item.item.id !== action.payload.id
       );
+      state.totalCount -= matchingItemInCart!.quantity;
+      removeItemFromCart(state, action);
     },
   },
 });
