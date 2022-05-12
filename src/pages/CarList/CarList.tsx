@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import CarCard from "../../components/CarCard/CarCard";
 import { API_URL } from "../../constants";
 import { useQuery } from "../../hooks/useQuery";
+import { CarDetails } from "../../models/CarDetails";
 import { updateCars, updateErrorState, updateLoadState } from "../../redux/CarsList/reducer";
 import { getRequest } from "../../requests/apiRequest";
 import "./CarList.scss";
@@ -51,6 +53,7 @@ const CarList = (): JSX.Element => {
   }, [selectedCarType, searchStr]);
 
   return (
+    <>
     <div>
       <div className="car-list-btn-group">
         <div className="car-list-btn-ele">
@@ -67,6 +70,12 @@ const CarList = (): JSX.Element => {
         </div>
       </div>
     </div>
+
+    <div>
+      {cars?.map((car:CarDetails)=>CarCard(car))}
+    </div>
+</>
+
   );
 };
 
