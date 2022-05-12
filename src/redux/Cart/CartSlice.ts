@@ -33,11 +33,38 @@ export const CartSlice = createSlice({
       }
       state.totalCount = state.totalCount + 1;
     },
-    increaseQuantity: (state, action: PayloadAction<IcarData>) => {},
-    decreaseQuantity: (state, action: PayloadAction<IcarData>) => {},
-    removeFromCart: (state, action: PayloadAction<IcarData>) => {},
+    increaseQuantity: (state, action: PayloadAction<IcarData>) => {
+      state.items.find(
+        (item) => item.item.id === action.payload.id
+      )!.quantity += 1;
+      state.totalCount += 1;
+    },
+    decreaseQuantity: (state, action: PayloadAction<IcarData>) => {
+      const qty = state.items.find((item) => item.item.id === action.payload.id)
+        ?.quantity!;
+      if (qty > 1) {
+        state.items.find(
+          (item) => item.item.id === action.payload.id
+        )!.quantity -= 1;
+      } else {
+        state.items = state.items.filter(
+          (item) => item.item.id !== action.payload.id
+        );
+      }
+      state.totalCount -= 1;
+    },
+    removeFromCart: (state, action: PayloadAction<IcarData>) => {
+      const qty = state.items.find(
+        (item) => item.item.id === action.payload.id
+      )?.quantity;
+      state.totalCount -= qty!;
+      state.items = state.items.filter(
+        (item) => item.item.id !== action.payload.id
+      );
+    },
   },
 });
 
 export default CartSlice.reducer;
-export const { addToCart, removeFromCart } = CartSlice.actions;
+export const { addToCart, removeFromCart, decreaseQuantity, increaseQuantity } =
+  CartSlice.actions;

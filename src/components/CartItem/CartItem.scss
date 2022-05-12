@@ -12,9 +12,18 @@
   p {
     margin: 1rem;
   }
+  button {
+    cursor: pointer;
+  }
+  .cart-item-quantity-div {
+    button {
+      margin: 1rem;
+    }
+  }
 }
 .cart-item-image {
   width: 4rem;
   height: 4rem;
   background-color: grey;
+  text-align: center;
 }
