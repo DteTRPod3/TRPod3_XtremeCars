@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 let initialState: { wishCars: CarDetails[]; error: boolean } = {
   wishCars: [],
-  error: "",
+  error: false,
 };
 
 export const WishListSlice = createSlice({
