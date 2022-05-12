@@ -9,6 +9,13 @@
 }
 
 .car-card-main {
+  margin: 1rem;
   width: fit-content;
   display: inline-block;
+  border: 2px solid black;
+  padding: 0.2rem;
+  background-color: grey;
+  .car-card-btn {
+    margin-right: 0.2rem;
+  }
 }
