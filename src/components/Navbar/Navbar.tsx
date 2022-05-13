@@ -41,6 +41,9 @@ const Navbar = () => {
         <div className="nav-bar-car-link">
           <NavLink to="/newcars">New Cars</NavLink>
         </div>
+        <div className="nav-bar-car-link">
+          <NavLink to="/compare-cars">Compare Cars</NavLink>
+        </div>
       </div>
 
       <div className="nav-bar-right">

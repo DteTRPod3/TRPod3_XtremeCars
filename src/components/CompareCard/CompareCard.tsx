@@ -1,32 +1,43 @@
 import React from "react";
-import "./CompareCard.scss";
+import { useDispatch } from "react-redux";
+import { ICarComparisonDetails } from "../../models/ICarComparisonDetails";
+import { removeFromCompare } from "../../redux/CompareCars/reducer";
+import { removeCarDetailsData } from "../../redux/CompareCarsDetails/reducer";
 
-function CompareCard() {
+function CompareCard(props:any) {
+  const carId = props.carId
+  const car:ICarComparisonDetails = props.carsData
+  const dispatch = useDispatch()
+  const removeCar = ()=>{
+    dispatch(removeCarDetailsData(car.specifications.name))
+    dispatch(removeFromCompare(carId))
+  }
+  debugger
   return (
     <>
-      <header>
-        <h3>Car Name here</h3>
+      <header data-carId={carId}>
+        <h3>{car.specifications.name}</h3>
       </header>
       <div>
-        <p>Fuel Type here</p>
+        <p>{car.specifications.fuel_type}</p>
       </div>
       <div>
-        <p>Engine</p>
+        <p>{car.specifications.engine_cc}</p>
       </div>
       <div>
-        <p>Torque</p>
+        <p>{car.specifications.torque}</p>
       </div>
       <div>
-        <p>Acceleration</p>
+        <p>{car.specifications.acceleration}</p>
       </div>
       <div>
-        <p>Top Speed</p>
+        <p>{car.specifications.top_speed}</p>
       </div>
       <div>
-        <p>On Road Price</p>
+        <p>{car.cost}</p>
       </div>
       <div>
-          <button>Remove</button>
+          <button onClick={removeCar}>Remove</button>
       </div>
     </>
   );

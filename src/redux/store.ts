@@ -1,4 +1,7 @@
-import { compose, configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
+import { compose } from "redux";
+import comparecarreducer from "./CompareCars/reducer";
+import comparecardetailslice from "./CompareCarsDetails/reducer";
 import authenticationreducer from "./Authentication/reducer";
 import CartReducer from "./Cart/CartSlice";
 import carsListSlice from "./CarsList/reducer";
@@ -15,6 +18,8 @@ export const store = configureStore({
   reducer: {
     cart: CartReducer,
     authenticationReducer: authenticationreducer,
+    compareCarReducer: comparecarreducer,
+    compareCarsDetailsSlice: comparecardetailslice,
     carsListReducer: carsListSlice,
   },
 });
