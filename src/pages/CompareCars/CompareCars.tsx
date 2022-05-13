@@ -14,7 +14,6 @@ import { Link } from "react-router-dom";
 import CarList from "../CarList/CarList";
 
 function CompareCars() {
-  debugger;
   const dispatch = useDispatch();
   const compareCars = useSelector((state: any) => {
     return state.compareCarReducer.carsIds;

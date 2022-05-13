@@ -12,7 +12,6 @@ function CompareCard(props:any) {
     dispatch(removeCarDetailsData(car.specifications.name))
     dispatch(removeFromCompare(carId))
   }
-  debugger
   return (
     <>
       <header data-carId={carId}>

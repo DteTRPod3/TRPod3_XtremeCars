@@ -5,7 +5,11 @@ import CarCard from "../../components/CarCard/CarCard";
 import { API_URL } from "../../constants";
 import { useQuery } from "../../hooks/useQuery";
 import { CarDetails } from "../../models/CarDetails";
-import { updateCars, updateErrorState, updateLoadState } from "../../redux/CarsList/reducer";
+import {
+  updateCars,
+  updateErrorState,
+  updateLoadState,
+} from "../../redux/CarsList/reducer";
 import { getRequest } from "../../requests/apiRequest";
 import "./CarList.scss";
 
@@ -20,7 +24,9 @@ const CarList = (): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const query = useQuery();
-  const [selectedCarType, setSelectedCarType] = useState<CarType>(CarType.ALL_CARS);
+  const [selectedCarType, setSelectedCarType] = useState<CarType>(
+    CarType.ALL_CARS
+  );
   const [searchStr, setSearchStr] = useState<string>("");
   const cars = useSelector((state: any) => state.carsListReducer.cars);
   const error = useSelector((state: any) => state.carsListReducer.error);
@@ -127,16 +133,16 @@ const CarList = (): JSX.Element => {
           </form>
         </div>
       </div>
-      {error !== null &&
+      {error !== null && (
         <div className="car-list-error">
           Something went wrong. Please try again later.
         </div>
-      }
-      {cars?.length === 0 &&
+      )}
+      {cars?.length === 0 && (
         <div className="car-list-error">
           There are no cars meet your search criteria.
         </div>
-      }
+      )}
       <div className="car-list-grid">
         {cars?.map((car: CarDetails) => (
           <CarCard key={car.id} carData={car} />
