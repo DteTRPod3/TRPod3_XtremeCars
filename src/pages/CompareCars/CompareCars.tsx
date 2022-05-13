@@ -9,7 +9,7 @@ import {
   resetCarsDetals,
 } from "../../redux/CompareCarsDetails/reducer";
 import { ICarComparisonDetails } from "../../models/ICarComparisonDetails";
-import { API_URL, NUMBEROFCARSTOCOMPARE } from "../../constants";
+import { API_URL, NUMBER_OF_CARS_TO_COMPARE } from "../../constants";
 import { Link } from "react-router-dom";
 import CarList from "../CarList/CarList";
 
@@ -17,10 +17,10 @@ function CompareCars() {
   debugger;
   const dispatch = useDispatch();
   const compareCars = useSelector((state: any) => {
-    return state.CompareCarReducer.carsIds;
+    return state.compareCarReducer.carsIds;
   });
   const carDetails = useSelector((state: any) => {
-    return state.CompareCarsDetailsSlice.carsDetail;
+    return state.compareCarsDetailsSlice.carsDetail;
   });
   useEffect(() => {
     document.title = "Xtreme Cars | Compare Cars";
@@ -50,7 +50,7 @@ function CompareCars() {
   );
 
   const renderNoCar = [];
-  for (let i = 0; i < NUMBEROFCARSTOCOMPARE - carDetails.length; i++) {
+  for (let i = 0; i < NUMBER_OF_CARS_TO_COMPARE - carDetails.length; i++) {
     renderNoCar.push(
       <section className="compare-cars-car1-column compare-cars-column">
         <Link to={"/"}>Please Add a Car to Compare</Link>

@@ -1,4 +1,4 @@
-import { NUMBEROFCARSTOCOMPARE } from '../../constants';
+import { NUMBER_OF_CARS_TO_COMPARE } from '../../constants';
 import { createSlice,PayloadAction } from "@reduxjs/toolkit";
 
 const initialState : {error:string,carsIds:string[],length:number}= {
@@ -12,7 +12,7 @@ const compareCarsSlice=createSlice({
     initialState,
     reducers:{
         addToCompare:(state,action:PayloadAction<string>)=>{
-            if(state.carsIds.length<NUMBEROFCARSTOCOMPARE)
+            if(state.carsIds.length<NUMBER_OF_CARS_TO_COMPARE)
                 state.carsIds.push(action.payload)
         },
         removeFromCompare:(state,action:PayloadAction<string>)=>{

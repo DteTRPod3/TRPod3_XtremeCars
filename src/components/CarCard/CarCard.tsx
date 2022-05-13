@@ -4,7 +4,7 @@ import rightarrow from "../../assets/rightArrow.svg";
 import { CarDetails } from "../../models/CarDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCompare } from "../../redux/CompareCars/reducer";
-import { NUMBEROFCARSTOCOMPARE } from "../../constants";
+import { NUMBER_OF_CARS_TO_COMPARE } from "../../constants";
 import { addToCart } from "../../redux/Cart/CartSlice";
 
 const CarCard = (props: {carData: CarDetails}) => {
@@ -16,14 +16,14 @@ const CarCard = (props: {carData: CarDetails}) => {
   }
   debugger
   const compareCarsIds = useSelector((state: any) => {
-    return state.CompareCarReducer.carsIds;
+    return state.compareCarReducer.carsIds;
   });
   
   const {id:currentCarId} = props.carData
   useEffect(() => {
     compareCarsIds.forEach((carId:any)=>{
       if(carId===currentCarId) setDisable(true)
-      if(compareCarsIds.length===2) setDisable(true)
+      if(compareCarsIds.length===NUMBER_OF_CARS_TO_COMPARE) setDisable(true)
     })
   }, [compareCarsIds.length])
 

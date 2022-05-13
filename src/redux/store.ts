@@ -18,8 +18,8 @@ export const store = configureStore({
   reducer: {
     cart: CartReducer,
     authenticationReducer: authenticationreducer,
-    CompareCarReducer: comparecarreducer,
-    CompareCarsDetailsSlice: comparecardetailslice,
+    compareCarReducer: comparecarreducer,
+    compareCarsDetailsSlice: comparecardetailslice,
     carsListReducer: carsListSlice,
   },
 });

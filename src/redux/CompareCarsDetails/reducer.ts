@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { NUMBEROFCARSTOCOMPARE } from "../../constants";
+import { NUMBER_OF_CARS_TO_COMPARE } from "../../constants";
 import { ICarComparisonDetails } from "../../models/ICarComparisonDetails";
 
 const initialState : {loading:string,error:string,carsDetail:ICarComparisonDetails[]}= {
@@ -19,7 +19,7 @@ const compareCarsDetailsSlice=createSlice({
             state.loading="true"
         },
         fetchCarDetailsGetData:(state,action:PayloadAction<ICarComparisonDetails>)=>{
-            if(state.carsDetail.length<NUMBEROFCARSTOCOMPARE){
+            if(state.carsDetail.length<NUMBER_OF_CARS_TO_COMPARE){
                 state.carsDetail.push(action.payload)
             }
         },
