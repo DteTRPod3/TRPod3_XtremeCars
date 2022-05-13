@@ -127,9 +127,14 @@ const CarList = (): JSX.Element => {
           </form>
         </div>
       </div>
-      {(error !== null || cars?.length === 0) &&
+      {error !== null &&
         <div className="car-list-error">
           Something went wrong. Please try again later.
+        </div>
+      }
+      {cars?.length === 0 &&
+        <div className="car-list-error">
+          There are no cars meet your search criteria.
         </div>
       }
       <div className="car-list-grid">
