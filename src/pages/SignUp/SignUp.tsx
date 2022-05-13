@@ -1,7 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { API_URL } from "../../constants";
+import { signup, userError } from "../../redux/Authentication/reducer";
+import { postRequest } from "../../requests/apiRequest";
 import "./SignUp.scss";
 const SignUp = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [signUpFormData, setSignUpFormData] = useState({
     email: "",
     password: "",
@@ -12,7 +18,22 @@ const SignUp = () => {
   });
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    window.alert("form submitted");
+    const response = postRequest(`${API_URL}users`, signUpFormData);
+    response
+      .then((data) => {
+        if (data.status !== "401") {
+          dispatch(signup(data));
+          window.alert("form submitted");
+          navigate("/");
+        } else {
+          dispatch(userError(data.message));
+          window.alert(data.message);
+        }
+      })
+      .catch((err) => {
+        dispatch(userError("Error"));
+        window.alert("error");
+      });
   };
   const handleChange = (e: any) => {
     const { name, value } = e.target;

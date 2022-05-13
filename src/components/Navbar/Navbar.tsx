@@ -1,11 +1,13 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+
 import Logo from "../../assets/logo.svg";
 import loggedProfile from "../../assets/man.png";
 import cartImage from "../../assets/cartImage.svg";
 import wishListIcon from "../../assets/WishlistIcon.png";
 import UnknownProfile from "../../assets/profile.svg";
+import { logout } from "../../redux/Authentication/reducer";
 import "./Navbar.scss";
 import { RootState } from "../../redux/store";
 const Navbar = () => {
@@ -16,10 +18,15 @@ const Navbar = () => {
   const wishCarsCount = wishCars?.length;
   const isLoggedin = true;
   let profilepicture;
-
-  isLoggedin === true
+  const user = useSelector((state: RootState) => state.authenticationReducer);
+  user?.isAuthenticated === true
     ? (profilepicture = loggedProfile)
     : (profilepicture = UnknownProfile);
+  const dispatch = useDispatch();
+
+  const logoutUser = () => {
+    dispatch(logout());
+  };
 
   return (
     <div className="nav-bar-main">
@@ -42,6 +49,9 @@ const Navbar = () => {
         <div className="nav-bar-car-link">
           <NavLink to="/newcars">New Cars</NavLink>
         </div>
+        <div className="nav-bar-car-link">
+          <NavLink to="/compare-cars">Compare Cars</NavLink>
+        </div>
       </div>
 
       <div className="nav-bar-right">
@@ -58,19 +68,30 @@ const Navbar = () => {
 
         <div className="cart-div">
           <NavLink to="/cart">
-            <img className="nav-bar-cart-img" src={cartImage} alt="cart" />
+            <img className="nav-bar-cart-img" src={cartImage} alt="cart" />(
+            {useSelector((state: RootState) => state.cart.totalCount)})
           </NavLink>
         </div>
         <div className="cart-div">
-          <NavLink to="/login">
-            Login/Signup
-            <img
-              className="nav-bar-profile-img"
-              src={profilepicture}
-              alt="Profile pic"
-            />
-          </NavLink>
+          {user?.isAuthenticated === false && (
+            <NavLink to="/login">Login/Signup</NavLink>
+          )}
+          <img
+            className="nav-bar-profile-img"
+            src={profilepicture}
+            alt="Profile pic"
+          />
         </div>
+        {user?.isAuthenticated && (
+          <div className="cart-div">
+            <NavLink to="/">
+              <button onClick={logoutUser}>Logout</button>
+            </NavLink>
+          </div>
+        )}
+        {user?.isAuthenticated && (
+          <div className="cart-div">{user?.user?.name}</div>
+        )}
       </div>
     </div>
   );
