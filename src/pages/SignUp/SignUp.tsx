@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { API_URL } from "../../constants";
-import { signup, userError } from "../../redux/authentication/reducer";
+import { signup, userError } from "../../redux/Authentication/reducer";
 import { postRequest } from "../../requests/apiRequest";
 import "./SignUp.scss";
 const SignUp = () => {

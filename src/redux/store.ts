@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { compose } from "redux";
 import comparecarreducer from "./CompareCars/reducer";
 import comparecardetailslice from "./CompareCarsDetails/reducer";
-import authenticationreducer from "./authentication/reducer";
+import authenticationreducer from "./Authentication/reducer";
 import CartReducer from "./Cart/CartSlice";
 import carsListSlice from "./CarsList/reducer";
 

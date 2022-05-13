@@ -29,11 +29,11 @@ const CarCard = (props: {carData: CarDetails}) => {
 
   return (
     <div className="car-card-main">
-      <img className="car-card-car-image" src={props.carData.image} alt="car-img" />
+      <img className="car-card-car-image" src={car.image} alt="car-img" />
       <div className="car-card-data">
         <div>
-          <h6> {props.carData.name}</h6>
-          <p>{props.carData.price} kh onwards</p>
+          <h6> {car.name}</h6>
+          <p>{car.price} kh onwards</p>
         </div>
         <div>
           <img src={rightarrow} alt="detail" />
