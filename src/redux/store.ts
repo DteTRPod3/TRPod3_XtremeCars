@@ -19,3 +19,4 @@ export const store = configureStore({
     wishListReducer: wishList,
   },
 });
+export type RootState = ReturnType<typeof store.getState>;

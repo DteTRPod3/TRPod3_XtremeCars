@@ -4,13 +4,16 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import loggedProfile from "../../assets/man.png";
 import cartImage from "../../assets/cartImage.svg";
-import WishListIcon from "../../assets/WishlistIcon.png";
+import wishListIcon from "../../assets/WishlistIcon.png";
 import UnknownProfile from "../../assets/profile.svg";
 import "./Navbar.scss";
+import { RootState } from "../../redux/store";
 const Navbar = () => {
-  const WishCars = useSelector((state: any) => state.wishListReducer.wishCars);
+  const wishCars = useSelector(
+    (state: RootState) => state.wishListReducer.wishList
+  );
 
-  const WishCarsCount = WishCars?.length;
+  const wishCarsCount = wishCars?.length;
   const isLoggedin = true;
   let profilepicture;
 
@@ -46,10 +49,10 @@ const Navbar = () => {
           <NavLink to="/Wishlist">
             <img
               className="nav-bar-cart-img"
-              src={WishListIcon}
+              src={wishListIcon}
               alt="wishList"
             />
-            {WishCarsCount}
+            {wishCarsCount}
           </NavLink>
         </div>
 

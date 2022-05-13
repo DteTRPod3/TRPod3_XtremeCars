@@ -1,26 +1,20 @@
 import React from "react";
 import { useEffect } from "react";
-import { useState } from "react";
 import { useSelector } from "react-redux";
 import CarCard from "../../components/CarCard/CarCard";
 import { CarDetails } from "../../models/CarDetails";
+import { RootState } from "../../redux/store";
 import "./WishList.scss";
 
 const WishList = () => {
   const carsWishList = useSelector(
-    (state: any) => state.wishListReducer.wishCars
+    (state: RootState) => state.wishListReducer.wishList
   );
 
-  const uniqueWishList: CarDetails[] = Array.from(new Set(carsWishList));
-
-  const [wishCars, setwishCars] = useState<CarDetails[]>();
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Xtreme Cars | WishList";
-    return () => {
-      setwishCars(uniqueWishList);
-    };
-  }, []);
+  }, [carsWishList]);
   return (
     <>
       <div>
@@ -28,9 +22,9 @@ const WishList = () => {
       </div>
 
       <div className="wish-list-cars">
-        {wishCars?.map((wishcar: CarDetails) => (
-          <CarCard key={wishcar.id} carData={wishcar} />
-        ))}
+        {carsWishList?.map((wishcar: CarDetails) => {
+          return <CarCard key={wishcar.id} carData={wishcar} />;
+        })}
       </div>
     </>
   );

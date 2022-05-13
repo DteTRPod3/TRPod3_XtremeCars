@@ -3,12 +3,25 @@ import "./CarCard.scss";
 import rightarrow from "../../assets/rightArrow.svg";
 import { CarDetails } from "../../models/CarDetails";
 import { useDispatch } from "react-redux";
-import { wishlist } from "../../redux/WishList/reducer";
+import {
+  removeFromWishList,
+  addToWishlist,
+} from "../../redux/WishList/reducer";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 const CarCard = (props: { carData: CarDetails }) => {
+  const wishListStatus = useSelector(
+    (state: RootState) => state.wishListReducer.wishList
+  ).find((item) => item.id === props.carData.id);
   const dispatch = useDispatch();
+
   const wishListHandler = () => {
-    dispatch(wishlist({ carData: props.carData }));
+    if (wishListStatus === undefined) {
+      dispatch(addToWishlist(props.carData));
+    } else {
+      dispatch(removeFromWishList(props.carData));
+    }
   };
 
   return (
@@ -30,9 +43,10 @@ const CarCard = (props: { carData: CarDetails }) => {
       <div className="car-card-btn-group">
         <button className="car-card-btn">Add to cart</button>
         <button className="car-card-btn"> Add to compare</button>
-        <button className="car-card-btn" onClick={() => wishListHandler()}>
-          {" "}
-          Add to wishlist
+        <button className="car-card-btn" onClick={wishListHandler}>
+          {wishListStatus === undefined
+            ? "Add to WishList"
+            : "Remove from Wishlist"}
         </button>
       </div>
     </div>
