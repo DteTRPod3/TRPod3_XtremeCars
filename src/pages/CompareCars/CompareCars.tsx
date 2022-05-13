@@ -1,34 +1,62 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CompareCard from "../../components/CompareCard/CompareCard";
-import { addToCompare } from "../../redux/CompareCars/CompareCarsSlice";
 import { getRequest } from "../../requests/apiRequest";
 import "./CompareCars.scss";
 import {
   fetchCarDetailsErrorState,
   fetchCarDetailsGetData,
-  fetchCarDetailsLoadState,
-} from "../../redux/CompareCarsDetails/CompareCarsDetailsSlice";
+  resetCarsDetals,
+} from "../../redux/CompareCarsDetails/reducer";
+import { ICarComparisonDetails } from "../../models/ICarComparisonDetails";
+import { API_URL, NUMBEROFCARSTOCOMPARE } from "../../constants";
+import { Link } from "react-router-dom";
+import CarList from "../CarList/CarList";
 
 function CompareCars() {
-  const length = 2;
+  debugger;
   const dispatch = useDispatch();
   const compareCars = useSelector((state: any) => {
     return state.CompareCarReducer.carsIds;
   });
+  const carDetails = useSelector((state: any) => {
+    return state.CompareCarsDetailsSlice.carsDetail;
+  });
   useEffect(() => {
+    document.title = "Xtreme Cars | Compare Cars";
+  }, []);
+
+  useEffect(() => {
+    dispatch(resetCarsDetals());
     compareCars.forEach((cid: any) => {
-      const url = `http://localhost:8080/cars/details/${cid}`;
+      const url = `${API_URL}cars/details/${cid}`;
       getRequest(url)
         .then((response) => {
-          dispatch(fetchCarDetailsGetData({ carDetail: response }));
+          dispatch(fetchCarDetailsGetData(response));
         })
         .catch((error) => {
-          dispatch(fetchCarDetailsErrorState({ error: "Error" }));
+          dispatch(fetchCarDetailsErrorState("Error occured"));
         });
     });
   }, []);
+  const carDetailsRendering = carDetails.map(
+    (car: ICarComparisonDetails, index: number) => {
+      return (
+        <section className="compare-cars-car1-column compare-cars-column">
+          <CompareCard carsData={car} carId={compareCars[index]} />
+        </section>
+      );
+    }
+  );
 
+  const renderNoCar = [];
+  for (let i = 0; i < NUMBEROFCARSTOCOMPARE - carDetails.length; i++) {
+    renderNoCar.push(
+      <section className="compare-cars-car1-column compare-cars-column">
+        <Link to={"/"}>Please Add a Car to Compare</Link>
+      </section>
+    );
+  }
   return (
     <>
       <main className="compare-cars-container">
@@ -55,29 +83,10 @@ function CompareCars() {
             <p>On Road Price</p>
           </div>
         </section>
-        {length < 1 && (
-          <section className="compare-cars-car1-column compare-cars-column">
-            <a>Go to Home Page to add car</a>
-          </section>
-        )}
-        {length >= 1 && (
-          <section className="compare-cars-car1-column compare-cars-column">
-            <CompareCard />
-          </section>
-        )}
-        {length < 2 && (
-          <section className="compare-cars-car1-column compare-cars-column">
-            <a>Go to Home Page to add car</a>
-          </section>
-        )}
-        {length >= 2 && (
-          <section className="compare-cars-car1-column compare-cars-column">
-            <CompareCard />
-          </section>
-        )}
+        {carDetailsRendering}
+        {renderNoCar}
       </main>
     </>
   );
 }
-
 export default CompareCars;

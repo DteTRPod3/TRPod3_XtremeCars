@@ -2,8 +2,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import { compose } from "redux";
 
 import authenticationreducer from "./Authentication/reducer";
-import comparecarreducer from "./CompareCars/CompareCarsSlice"
-import comparecardetailslice from "./CompareCarsDetails/CompareCarsDetailsSlice"
+import comparecarreducer from "./CompareCars/reducer"
+import comparecardetailslice from "./CompareCarsDetails/reducer"
 import  carsListSlice from './CarsList/reducer';
 
 declare global {
