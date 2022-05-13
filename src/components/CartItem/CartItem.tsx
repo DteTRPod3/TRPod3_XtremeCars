@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { IcarData } from "../../models/ICarData";
+import { CarDetails } from "../../models/CarDetails";
 import {
   removeFromCart,
   decreaseQuantity,
@@ -9,7 +9,7 @@ import {
 import "./CartItem.scss";
 
 function CartItem(cardData: any) {
-  const car = cardData.cardData.item as IcarData;
+  const car = cardData.cardData.item as CarDetails;
   const quantity = cardData.cardData.quantity as number;
   const dispatch = useDispatch();
   return (

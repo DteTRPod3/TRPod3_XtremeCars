@@ -1,9 +1,9 @@
-import { IcarData } from "./../../models/ICarData";
+import { CarDetails } from './../../models/CarDetails';
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface cartStatus {
   items: {
-    item: IcarData;
+    item: CarDetails;
     quantity: number;
   }[];
   totalCount: number;
@@ -36,13 +36,13 @@ export const CartSlice = createSlice({
   name: "Cart",
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<IcarData>) => {
+    addToCart: (state, action: PayloadAction<CarDetails>) => {
       addItemToCart(state, action);
     },
-    increaseQuantity: (state, action: PayloadAction<IcarData>) => {
+    increaseQuantity: (state, action: PayloadAction<CarDetails>) => {
       addItemToCart(state, action);
     },
-    decreaseQuantity: (state, action: PayloadAction<IcarData>) => {
+    decreaseQuantity: (state, action: PayloadAction<CarDetails>) => {
       const matchingItemInCart = state.items.find(
         (item) => item.item.id === action.payload.id
       );
@@ -54,7 +54,7 @@ export const CartSlice = createSlice({
       }
       state.totalCount -= 1;
     },
-    removeFromCart: (state, action: PayloadAction<IcarData>) => {
+    removeFromCart: (state, action: PayloadAction<CarDetails>) => {
       const matchingItemInCart = state.items.find(
         (item) => item.item.id === action.payload.id
       );

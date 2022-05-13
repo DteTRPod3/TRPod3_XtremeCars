@@ -5,8 +5,7 @@ import cartImage from "../../assets/cartImage.svg";
 import Logo from "../../assets/logo.svg";
 import loggedProfile from "../../assets/man.png";
 import UnknownProfile from "../../assets/profile.svg";
-import { logout } from "../../redux/authentication/reducer";
-import { RootState } from "../../redux/store";
+import { logout } from "../../redux/Authentication/reducer";
 import "./Navbar.scss";
 import { RootState } from "../../redux/store";
 const Navbar = () => {
