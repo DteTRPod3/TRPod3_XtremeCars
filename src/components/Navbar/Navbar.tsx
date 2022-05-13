@@ -5,9 +5,9 @@ import cartImage from "../../assets/cartImage.svg";
 import Logo from "../../assets/logo.svg";
 import loggedProfile from "../../assets/man.png";
 import UnknownProfile from "../../assets/profile.svg";
-import { logout } from "../../redux/authentication/reducer";
-import { RootState } from "../../redux/store";
+import { logout } from "../../redux/Authentication/reducer";
 import "./Navbar.scss";
+import { RootState } from "../../redux/store";
 const Navbar = () => {
   let profilepicture;
   const user = useSelector((state: RootState) => state.authenticationReducer);
@@ -46,7 +46,8 @@ const Navbar = () => {
       <div className="nav-bar-right">
         <div className="cart-div">
           <NavLink to="/cart">
-            <img className="nav-bar-cart-img" src={cartImage} alt="cart" />
+            <img className="nav-bar-cart-img" src={cartImage} alt="cart" />(
+            {useSelector((state: RootState) => state.cart.totalCount)})
           </NavLink>
         </div>
         <div className="cart-div">
