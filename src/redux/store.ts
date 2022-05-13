@@ -13,9 +13,9 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export const store = configureStore({
   reducer: {
-    AuthenticationReducer: authenticationreducer,
-    carsListReducer: carsListSlice,
     cart: CartReducer,
+    authenticationReducer: authenticationreducer,
+    carsListReducer: carsListSlice,
   },
 });
 
