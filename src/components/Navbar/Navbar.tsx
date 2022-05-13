@@ -5,12 +5,12 @@ import cartImage from "../../assets/cartImage.svg";
 import Logo from "../../assets/logo.svg";
 import loggedProfile from "../../assets/man.png";
 import UnknownProfile from "../../assets/profile.svg";
-import { logout } from "../../redux/Authentication/reducer";
+import { logout } from "../../redux/authentication/reducer";
 import { RootState } from "../../redux/store";
 import "./Navbar.scss";
 const Navbar = () => {
   let profilepicture;
-  const user = useSelector((state: RootState) => state.AuthenticationReducer);
+  const user = useSelector((state: RootState) => state.authenticationReducer);
   user?.isAuthenticated === true
     ? (profilepicture = loggedProfile)
     : (profilepicture = UnknownProfile);
