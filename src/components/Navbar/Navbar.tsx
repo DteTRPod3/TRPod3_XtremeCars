@@ -41,14 +41,9 @@ const Navbar = () => {
 
       <div className="nav-bar-car-btn-group">
         <div className="nav-bar-car-link">
-          <NavLink to="/allcars">All Cars</NavLink>
+          <NavLink to="/">All Cars</NavLink>
         </div>
-        <div className="nav-bar-car-link">
-          <NavLink to="/usedcars">Used Cars</NavLink>
-        </div>
-        <div className="nav-bar-car-link">
-          <NavLink to="/newcars">New Cars</NavLink>
-        </div>
+
         <div className="nav-bar-car-link">
           <NavLink to="/compare-cars">Compare Cars</NavLink>
         </div>

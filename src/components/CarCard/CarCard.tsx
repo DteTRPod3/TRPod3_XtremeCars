@@ -60,8 +60,12 @@ const CarCard = (props: { carData: CarDetails }) => {
         </div>
       </div>
       <div className="car-card-btn-group">
-        <button className="car-card-btn">Add to cart</button>
-        <button className="car-card-btn"> Add to compare</button>
+        <button
+          className="car-card-btn"
+          onClick={() => dispatch(addToCart(car))}
+        >
+          Add to cart
+        </button>
         <button className="car-card-btn" onClick={wishListHandler}>
           {wishListStatus === undefined
             ? "Add to WishList"
@@ -69,19 +73,11 @@ const CarCard = (props: { carData: CarDetails }) => {
         </button>
         <button
           className="car-card-btn"
-          onClick={() => dispatch(addToCart(car))}
-        >
-          Add to cart
-        </button>
-        <button
-          className="car-card-btn"
           onClick={addToCompareCars}
           disabled={disable}
         >
-          {" "}
           Add to compare
         </button>
-        <button className="car-card-btn"> Add to wishlist</button>
       </div>
     </div>
   );
