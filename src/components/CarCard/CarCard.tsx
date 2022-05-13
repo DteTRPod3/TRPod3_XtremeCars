@@ -34,7 +34,6 @@ const CarCard = (props: { carData: CarDetails }) => {
   const addToCompareCars = () => {
     dispatch(addToCompare(props.carData.id));
   };
-  debugger;
   const compareCarsIds = useSelector((state: any) => {
     return state.compareCarReducer.carsIds;
   });
@@ -53,7 +52,7 @@ const CarCard = (props: { carData: CarDetails }) => {
       <div className="car-card-data">
         <div>
           <h6> {car.name}</h6>
-          <p>{car.price} kh onwards</p>
+          <p>{car.price} akh onwards</p>
         </div>
         <div>
           <img src={rightarrow} alt="detail" />
