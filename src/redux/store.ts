@@ -1,8 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { compose } from "redux";
-
-import authenticationreducer from "./Authentication/reducer";
-import  carsListSlice from './CarsList/reducer';
+import authenticationreducer from "./authentication/reducer";
+import carsListSlice from "./CarsList/reducer";
 
 declare global {
   interface Window {
@@ -13,5 +12,10 @@ declare global {
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export const store = configureStore({
-  reducer: { AuthenticationReducer: authenticationreducer, carsListReducer: carsListSlice },
+  reducer: {
+    authenticationReducer: authenticationreducer,
+    carsListReducer: carsListSlice,
+  },
 });
+
+export type RootState = ReturnType<typeof store.getState>;
