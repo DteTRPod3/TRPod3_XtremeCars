@@ -5,8 +5,10 @@ import { CarDetails } from "../../models/CarDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCompare } from "../../redux/CompareCars/reducer";
 import { NUMBEROFCARSTOCOMPARE } from "../../constants";
+import { addToCart } from "../../redux/Cart/CartSlice";
 
 const CarCard = (props: {carData: CarDetails}) => {
+  const car = props.carData;
   const dispatch = useDispatch() 
   const [disable,setDisable] = useState(false)
   const addToCompareCars = ()=>{
@@ -38,7 +40,11 @@ const CarCard = (props: {carData: CarDetails}) => {
         </div>
       </div>
       <div className="car-card-btn-group">
-        <button className="car-card-btn">Add to cart</button>
+       <button
+       className="car-card-btn"
+       onClick={() => dispatch(addToCart(car))}
+     >Add to cart
+     </button>
         <button className="car-card-btn" onClick={addToCompareCars} disabled={disable}> Add to compare</button>
         <button className="car-card-btn"> Add to wishlist</button>
       </div>

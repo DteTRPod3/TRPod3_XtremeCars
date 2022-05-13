@@ -1,0 +1,29 @@
+.cart-item-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid black;
+  width: 50%;
+  margin: 1rem;
+  div {
+    margin: 1rem;
+  }
+  p {
+    margin: 1rem;
+  }
+  button {
+    cursor: pointer;
+  }
+  .cart-item-quantity-div {
+    button {
+      margin: 1rem;
+    }
+  }
+}
+.cart-item-image {
+  width: 4rem;
+  height: 4rem;
+  background-color: grey;
+  text-align: center;
+}
