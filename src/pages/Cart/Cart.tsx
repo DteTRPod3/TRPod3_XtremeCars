@@ -8,12 +8,14 @@ function Cart() {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const totalCount = useSelector((state: RootState) => state.cart.totalCount);
   return (
-    <div className="cart-main-container">
+    <div>
       <h3>Cart (total count: {totalCount})</h3>
       <br /> <hr /> <br />
-      {cartItems?.map((item: any, index) => (
-        <CartItem key={index} cardData={item} />
-      ))}
+      <div className="cart-main-container">
+        {cartItems?.map((item: any, index) => (
+          <CartItem key={index} cardData={item} />
+        ))}
+      </div>
     </div>
   );
 }
