@@ -1,7 +1,11 @@
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-  margin: 0;
-  font-family: "Roboto", sans-serif;
-}
+@charset "UTF-8";
+
+// 1. Configuration and helpers
+@import
+  '../src/stylesheets/abstracts/colors';
+
+// 3. Base stuff
+@import
+  '../src/stylesheets/base/font',
+  '../src/stylesheets/base/reset',
+  '../src/stylesheets/base/typography';
