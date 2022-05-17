@@ -6,6 +6,7 @@ import Logo from "../../assets/logo.svg";
 import loggedProfile from "../../assets/man.png";
 import cartImage from "../../assets/cartImage.svg";
 import wishListIcon from "../../assets/WishlistIcon.png";
+import wishlist from "../../assets/heart.svg";
 import UnknownProfile from "../../assets/profile.svg";
 import { logout } from "../../redux/Authentication/reducer";
 import "./Navbar.scss";
@@ -31,7 +32,7 @@ const Navbar = () => {
   return (
     <div className="nav-bar-main">
       <div>
-        <NavLink to="/">
+        <NavLink to="/" className="nav-link">
           <div className="nav-bar-logo">
             <img src={Logo} alt="Xtreme cars logo" />
             <h5>XTREME CARS</h5>
@@ -41,35 +42,39 @@ const Navbar = () => {
 
       <div className="nav-bar-car-btn-group">
         <div className="nav-bar-car-link">
-          <NavLink to="/">All Cars</NavLink>
+          <NavLink to="/" className="nav-link">
+            All Cars
+          </NavLink>
         </div>
 
         <div className="nav-bar-car-link">
-          <NavLink to="/compare-cars">Compare Cars</NavLink>
+          <NavLink to="/compare-cars" className="nav-link">
+            Compare Cars
+          </NavLink>
         </div>
       </div>
 
       <div className="nav-bar-right">
-        <div className="cart-div">
-          <NavLink to="/Wishlist">
-            <img
-              className="nav-bar-cart-img"
-              src={wishListIcon}
-              alt="wishList"
-            />
-            {wishCarsCount}
+        <div className="nav-cart-container">
+          <NavLink to="/Wishlist" title="Wishlist" className="nav-link">
+            <img className="nav-bar-wish-icon" src={wishlist} alt="wishlist" />
+            <span className="wish-count">{wishCarsCount}</span>
           </NavLink>
         </div>
 
-        <div className="cart-div">
-          <NavLink to="/cart">
-            <img className="nav-bar-cart-img" src={cartImage} alt="cart" />(
-            {useSelector((state: RootState) => state.cart.totalCount)})
+        <div className="nav-cart-container">
+          <NavLink to="/cart" title="Cart" className="nav-link">
+            <img className="nav-bar-cart-img" src={cartImage} alt="cart" />
+            <span className="cart-count">
+              {useSelector((state: RootState) => state.cart.totalCount)}
+            </span>
           </NavLink>
         </div>
-        <div className="cart-div">
+        <div className="nav-cart-container">
           {user?.isAuthenticated === false && (
-            <NavLink to="/login">Login/Signup</NavLink>
+            <NavLink to="/login" className="nav-link">
+              Login/Signup{" "}
+            </NavLink>
           )}
           <img
             className="nav-bar-profile-img"
@@ -78,14 +83,18 @@ const Navbar = () => {
           />
         </div>
         {user?.isAuthenticated && (
-          <div className="cart-div">
-            <NavLink to="/">
-              <button onClick={logoutUser}>Logout</button>
+          <div className="nav-cart-container">
+            <NavLink to="/" className="nav-link">
+              <button className="logout-btn" onClick={logoutUser}>
+                Logout
+              </button>
             </NavLink>
           </div>
         )}
         {user?.isAuthenticated && (
-          <div className="cart-div">{user?.user?.name}</div>
+          <div className="nav-cart-container">
+            {user?.user?.name.toLocaleUpperCase()}
+          </div>
         )}
       </div>
     </div>

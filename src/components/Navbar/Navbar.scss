@@ -7,7 +7,7 @@
 
   flex-wrap: wrap;
 
-  a {
+  .nav-link {
     color: aliceblue;
     text-decoration: none;
 
@@ -48,6 +48,8 @@
 .nav-bar-profile-img {
   vertical-align: middle;
   width: 2rem;
+  display: inline;
+  text-decoration: none;
 }
 
 .nav-bar-cart-img {
@@ -56,14 +58,48 @@
   &:hover {
     transform: scale(1.2);
   }
+  border-radius: 2px;
+  display: inline;
+}
+
+.nav-bar-wish-icon {
+  vertical-align: middle;
+  width: 1.5rem;
+  border-radius: 2px;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  display: inline;
 }
 
 .nav-bar-right {
   display: flex;
   justify-content: space-between;
-
-  .cart-div {
+  flex-wrap: wrap;
+  align-items: center;
+  .nav-cart-container {
     padding-right: 1.5rem;
     color: white;
+  }
+}
+
+.wish-count {
+  vertical-align: super;
+  padding-left: 0.2rem;
+  :hover {
+    text-decoration: none;
+  }
+}
+
+.nav--cart-count {
+  vertical-align: super;
+}
+
+.logout-btn {
+  border-radius: 5px;
+  &:hover {
+    transform: scale(1.1);
   }
 }
