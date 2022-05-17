@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import loggedProfile from "../../assets/man.png";
 import cartImage from "../../assets/cartImage.svg";
-import wishListIcon from "../../assets/WishlistIcon.png";
 import wishlist from "../../assets/heart.svg";
 import UnknownProfile from "../../assets/profile.svg";
 import { logout } from "../../redux/Authentication/reducer";
@@ -33,14 +32,14 @@ const Navbar = () => {
     <div className="nav-bar-main">
       <div>
         <NavLink to="/" className="nav-link">
-          <div className="nav-bar-logo">
+          <div className="nav-bar--logo">
             <img src={Logo} alt="Xtreme cars logo" />
             <h5>XTREME CARS</h5>
           </div>
         </NavLink>
       </div>
 
-      <div className="nav-bar-car-btn-group">
+      <div className="nav-bar--car-btn-group">
         <div className="nav-bar-car-link">
           <NavLink to="/" className="nav-link">
             All Cars
@@ -58,14 +57,14 @@ const Navbar = () => {
         <div className="nav-cart-container">
           <NavLink to="/Wishlist" title="Wishlist" className="nav-link">
             <img className="nav-bar-wish-icon" src={wishlist} alt="wishlist" />
-            <span className="wish-count">{wishCarsCount}</span>
+            <span className="nav--wish-count">{wishCarsCount}</span>
           </NavLink>
         </div>
 
         <div className="nav-cart-container">
           <NavLink to="/cart" title="Cart" className="nav-link">
             <img className="nav-bar-cart-img" src={cartImage} alt="cart" />
-            <span className="cart-count">
+            <span className="nav--cart-count">
               {useSelector((state: RootState) => state.cart.totalCount)}
             </span>
           </NavLink>
@@ -85,7 +84,7 @@ const Navbar = () => {
         {user?.isAuthenticated && (
           <div className="nav-cart-container">
             <NavLink to="/" className="nav-link">
-              <button className="logout-btn" onClick={logoutUser}>
+              <button className="button--logout" onClick={logoutUser}>
                 Logout
               </button>
             </NavLink>
