@@ -7,10 +7,13 @@ import "./Cart.scss";
 function Cart() {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const totalCount = useSelector((state: RootState) => state.cart.totalCount);
+
   return (
     <div>
-      <h3>Cart (total count: {totalCount})</h3>
-      <br /> <hr /> <br />
+      <div className="cart-header">
+        <p className="cart-header__title">My Cart</p>
+        <p>Item Count: {totalCount}</p>
+      </div>
       <div className="cart-main-container">
         {cartItems?.map((item: any, index) => (
           <CartItem key={index} cardData={item} />

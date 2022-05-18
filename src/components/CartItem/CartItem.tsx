@@ -23,11 +23,11 @@ function CartItem(cardData: any) {
       />
       <p className="card-item car-title">{car?.name}</p>
       <p className="card-item car-price">{car?.price}akh onwards</p>
-      <div className="card-content">
-        <div className="card-item cart-item-quantity-div">
+      <div className="card-item card-content">
+        <div className="cart-item-quantity-div">
           <p>Quantity:</p>
           <button
-            className="cart-item-primay-button"
+            className="button--dark"
             onClick={() => dispatch(decreaseQuantity(car))}
             title="Decrease the quantity"
           >
@@ -35,16 +35,14 @@ function CartItem(cardData: any) {
           </button>
           <p>{quantity}</p>
           <button
-            className="cart-item-primay-button"
+            className="button--dark"
             onClick={() => dispatch(increaseQuantity(car))}
             title="Increase the quantity"
           >
             +
           </button>
         </div>
-
         <button
-          className="card-item cart-item-primay-button"
           onClick={() => dispatch(removeFromCart(car))}
           title="Remove from Cart"
         >
