@@ -1,4 +1,4 @@
-@mixin circleCart-icon {
+@mixin circular-pill {
   margin-left: -9px;
   border: 1px solid black;
   border-radius: 50%;
@@ -12,11 +12,8 @@
   vertical-align: super;
 }
 
-
-
-
 .nav__wishCount {
-  @include circleCart-icon;
+  @include circular-pill;
   // margin-left: 0.15rem;
   :hover {
     text-decoration: none;
@@ -24,7 +21,7 @@
 }
 
 .nav__cartCount {
-  @include circleCart-icon;
+  @include circular-pill;
 }
 
 .button--logout {
@@ -38,7 +35,6 @@
   display: none;
 }
 
-
 .nav-bar-main {
   background-color: black;
   padding: 1rem;
@@ -46,6 +42,11 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  width: 100%;
 
   .nav-link {
     color: aliceblue;
@@ -60,7 +61,7 @@
 .nav-bar-main__brandLogo {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
   float: left;
   &:hover {
     transform: scale(1.1);
@@ -72,7 +73,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
 
   .nav-bar-main__car-link {
     margin-right: 1rem;
@@ -92,6 +92,7 @@
 }
 
 .nav-bar-main__cart-img {
+  min-width: 16px;
   vertical-align: middle;
   width: 2rem;
   &:hover {
@@ -102,6 +103,7 @@
 }
 
 .nav-bar-wish-icon {
+  min-width: 16px;
   vertical-align: middle;
   width: 1.5rem;
   border-radius: 2px;
@@ -113,13 +115,55 @@
   display: inline;
 }
 
-.nav-bar-profileDiv {
+.nav-bar-profile-div {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  justify-content: flex-end;
+  // flex-wrap: wrap;
   align-items: center;
-  .nav-bar-profileDiv__item {
-    padding-right: 1.5rem;
+  .nav-bar-profile-div__item {
+    margin-right: 1rem;
     color: white;
+  }
+}
+
+.nav-bar-main > div {
+  flex: 1;
+}
+
+@media only screen and (max-width: 970px) {
+  .nav__wishCount {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+
+  .nav__cartCount {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+  .nav-bar-profile-div {
+    font-size: x-small;
+    .nav-bar-profile-div__item {
+      margin-right: 0.25rem;
+    }
+  }
+
+  .nav-bar-main__brandLogo {
+    font-size: x-small;
+    max-width: 60%;
+    img {
+      width: 40%;
+    }
+  }
+
+  .nav-bar-profile-div__item {
+    margin-right: 0.25rem;
+  }
+
+  .nav-bar__profile-img {
+    display: none;
+  }
+  .nav-bar-main__car-btn-group {
+    font-size: x-small;
+    flex-direction: column;
   }
 }

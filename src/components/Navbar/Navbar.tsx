@@ -32,6 +32,7 @@ const Navbar = () => {
   return (
     <div className="nav-bar-main">
       <div>
+        {" "}
         <NavLink to="/" className="nav-link">
           <div className="nav-bar-main__brandLogo">
             <img src={Logo} alt="Xtreme cars logo" />
@@ -54,8 +55,8 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="nav-bar-profileDiv">
-        <div className="nav-bar-profileDiv__item">
+      <div className="nav-bar-profile-div">
+        <div className="nav-bar-profile-div__item">
           <NavLink to="/Wishlist" title="Wishlist" className="nav-link">
             <img className="nav-bar-wish-icon" src={wishlist} alt="wishlist" />
             <span
@@ -68,7 +69,7 @@ const Navbar = () => {
           </NavLink>
         </div>
 
-        <div className="nav-bar-profileDiv__item">
+        <div className="nav-bar-profile-div__item">
           <NavLink to="/cart" title="Cart" className="nav-link">
             <img
               className="nav-bar-main__cart-img"
@@ -84,30 +85,29 @@ const Navbar = () => {
             </span>
           </NavLink>
         </div>
-        <div className="nav-bar-profileDiv__item">
-          {user?.isAuthenticated === false && (
-            <NavLink to="/login" className="nav-link">
-              Login/Signup{" "}
-            </NavLink>
-          )}
+        <div className="nav-bar-profile-div__item">
           <img
             className="nav-bar__profile-img"
             src={profilepicture}
             alt="Profile pic"
           />
-        </div>
-        {user?.isAuthenticated && (
-          <div className="nav-bar-profileDiv__item">
-            <NavLink to="/" className="nav-link">
-              <button className="button--logout" onClick={logoutUser}>
-                Logout
-              </button>
+          {user?.isAuthenticated === false && (
+            <NavLink to="/login" className="nav-link">
+              <button>Login/Signup</button>
             </NavLink>
-          </div>
-        )}
+          )}
+          {user?.isAuthenticated && (
+            <span className="nav-bar-profile-div__item">
+              {user?.user?.name.toLocaleUpperCase()}
+            </span>
+          )}
+        </div>
+
         {user?.isAuthenticated && (
-          <div className="nav-bar-profileDiv__item">
-            {user?.user?.name.toLocaleUpperCase()}
+          <div className="nav-bar-profile-div__item">
+            <NavLink to="/" className="nav-link">
+              <button onClick={logoutUser}>Logout</button>
+            </NavLink>
           </div>
         )}
       </div>
