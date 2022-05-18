@@ -124,12 +124,12 @@ const CarList = (): JSX.Element => {
               id="search"
               name="search"
               value={searchStr}
-              placeholder="search..."
+              placeholder="Search..."
               onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                 setSearchStr(event.target.value)
               }
             />
-            <button type="button">search</button>
+            <button type="button">Search</button>
           </form>
         </div>
       </div>
