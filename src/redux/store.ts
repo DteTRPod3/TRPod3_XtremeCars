@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { compose } from "redux";
-import wishList from "./WishList/reducer";
-import authenticationreducer from "./Authentication/reducer";
+import authenticationreducer from "./authentication/reducer";
+import carsListSlice from "./CarsList/reducer";
+import CartReducer from "./Cart/CartSlice";
 import comparecarreducer from "./CompareCars/reducer";
 import comparecardetailslice from "./CompareCarsDetails/reducer";
-import CartReducer from "./Cart/CartSlice";
-import carsListSlice from "./CarsList/reducer";
+import wishList from "./WishList/reducer";
 
 declare global {
   interface Window {
