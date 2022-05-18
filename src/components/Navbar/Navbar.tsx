@@ -14,6 +14,7 @@ const Navbar = () => {
   const wishCars = useSelector(
     (state: RootState) => state.wishListReducer.wishList
   );
+  const cartCount = useSelector((state: RootState) => state.cart.totalCount);
 
   const wishCarsCount = wishCars?.length;
   const isLoggedin = true;
@@ -32,57 +33,71 @@ const Navbar = () => {
     <div className="nav-bar-main">
       <div>
         <NavLink to="/" className="nav-link">
-          <div className="nav-bar--logo">
+          <div className="nav-bar-main__brandLogo">
             <img src={Logo} alt="Xtreme cars logo" />
             <h5>XTREME CARS</h5>
           </div>
         </NavLink>
       </div>
 
-      <div className="nav-bar--car-btn-group">
-        <div className="nav-bar-car-link">
+      <div className="nav-bar-main__car-btn-group">
+        <div className="nav-bar-main__car-link">
           <NavLink to="/" className="nav-link">
             All Cars
           </NavLink>
         </div>
 
-        <div className="nav-bar-car-link">
+        <div className="nav-bar-main__car-link">
           <NavLink to="/compare-cars" className="nav-link">
             Compare Cars
           </NavLink>
         </div>
       </div>
 
-      <div className="nav-bar-right">
-        <div className="nav-cart-container">
+      <div className="nav-bar-profileDiv">
+        <div className="nav-bar-profileDiv__item">
           <NavLink to="/Wishlist" title="Wishlist" className="nav-link">
             <img className="nav-bar-wish-icon" src={wishlist} alt="wishlist" />
-            <span className="nav--wish-count">{wishCarsCount}</span>
-          </NavLink>
-        </div>
-
-        <div className="nav-cart-container">
-          <NavLink to="/cart" title="Cart" className="nav-link">
-            <img className="nav-bar-cart-img" src={cartImage} alt="cart" />
-            <span className="nav--cart-count">
-              {useSelector((state: RootState) => state.cart.totalCount)}
+            <span
+              className={
+                wishCarsCount === 0 ? "nav__icon--hide" : "nav__wishCount"
+              }
+            >
+              {wishCarsCount}
             </span>
           </NavLink>
         </div>
-        <div className="nav-cart-container">
+
+        <div className="nav-bar-profileDiv__item">
+          <NavLink to="/cart" title="Cart" className="nav-link">
+            <img
+              className="nav-bar-main__cart-img"
+              src={cartImage}
+              alt="cart"
+            />
+            <span
+              className={
+                cartCount === 0 ? "nav__icon--hide" : " nav__cartCount"
+              }
+            >
+              {cartCount}
+            </span>
+          </NavLink>
+        </div>
+        <div className="nav-bar-profileDiv__item">
           {user?.isAuthenticated === false && (
             <NavLink to="/login" className="nav-link">
               Login/Signup{" "}
             </NavLink>
           )}
           <img
-            className="nav-bar-profile-img"
+            className="nav-bar__profile-img"
             src={profilepicture}
             alt="Profile pic"
           />
         </div>
         {user?.isAuthenticated && (
-          <div className="nav-cart-container">
+          <div className="nav-bar-profileDiv__item">
             <NavLink to="/" className="nav-link">
               <button className="button--logout" onClick={logoutUser}>
                 Logout
@@ -91,7 +106,7 @@ const Navbar = () => {
           </div>
         )}
         {user?.isAuthenticated && (
-          <div className="nav-cart-container">
+          <div className="nav-bar-profileDiv__item">
             {user?.user?.name.toLocaleUpperCase()}
           </div>
         )}
