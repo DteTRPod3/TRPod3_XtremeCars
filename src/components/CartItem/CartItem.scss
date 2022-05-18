@@ -20,6 +20,11 @@
 .card-content {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.card-content > div {
+  flex: 1;
 }
 
 .car-title {
@@ -36,21 +41,7 @@
 .cart-item-quantity-div {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1%;
-  width: 50%;
-}
-
-.cart-item-primay-button {
-  background: none;
-  padding: 2%;
-  padding-left: 5%;
-  padding-right: 5%;
-  border-radius: 0.25rem;
-  border: none;
-  cursor: pointer;
-  font-size: medium;
-  box-shadow: 1px 2px 5px lightgray;
-}
-.cart-item-primay-button:hover {
-  box-shadow: 1px 2px 8px lightgray;
+  max-width: 65%;
 }
