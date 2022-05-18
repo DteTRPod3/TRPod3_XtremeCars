@@ -2,6 +2,7 @@
 
 button {
   background: none;
+  background-color: white;
   padding: 0.25rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -20,7 +21,7 @@ button:hover {
 button:disabled {
   box-shadow: none;
   border: none;
-  background-color: $default-button-disabled;   
+  background-color: $default-button-disabled;
   cursor: default;
 }
 
