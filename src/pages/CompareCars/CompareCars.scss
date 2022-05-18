@@ -1,13 +1,82 @@
-.compare-cars-container {
+@import "../../index.scss";
+
+// utility class for display flex
+.compare-cars__flex {
   display: flex;
-  background-color: #dcdcdc;
-  border: 1px solid #b6b5b5;
-  margin: 5rem 4rem;
-  padding: 4rem 3rem;
-  line-height: 1.7;
-  .compare-cars-column {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+}
+
+.compare-cars__column {
+	+ {
+		.compare-cars__column {
+			margin: 3rem 0 0 0;
+		}
+	}
+	>* {
+		+ {
+			* {
+				margin-top: 1rem;
+			}
+		}
+	}
+}
+
+// main css styling
+
+.compare-cars__container {
+  flex-direction: column;
+  width: 85%;
+  margin: 0 auto;
+  padding: 4rem 6rem;
+  background-color: $primary-light;
+  margin-top: 3rem;
+  .compare-cars__header {
+    margin-bottom: 2rem;
+    & h2 {
+      font-size: 2rem;
+    }
+  }
+}
+.compare-cars__main {
+	flex-direction: column;
+	.compare-cars__column {
+		flex: 1;
+		.compare-cars__add-car {
+			justify-content: center;
+			align-items: center;
+			align-content: center;
+			flex-direction: column;
+			width: 100%;
+			text-decoration: none;
+			color: inherit;
+			transition: transform ease-in 0.2s;
+			&:hover {
+				transform: scale(1.1);
+			}
+		}
+	}
+}
+
+// media screens
+@media only screen and (min-width: 550px) {
+  .compare-cars__main {
+    flex-direction: row;
+  }
+  .compare-cars__column + .compare-cars__column {
+    margin: 0 2rem 0 0;
+  }
+  .compare-cars__image-container {
+    max-height: 14rem;
+  }
+  .compare-cars__image-container {
+    min-height: 14rem;
+  }
+  .compare-cars__comparison {
+    padding-bottom: 17.5rem;
+  }
+}
+
+@media only screen and (min-width: 820px) {
+  .compare-cars__main .compare-cars__column .compare-cars__comparison {
+    padding-bottom: 16.5rem;
   }
 }
