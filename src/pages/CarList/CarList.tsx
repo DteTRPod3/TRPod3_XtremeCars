@@ -73,13 +73,13 @@ const CarList = (): JSX.Element => {
   }, [selectedCarType, searchStr, navigate, dispatch]);
 
   return (
-    <div className="car-list-container">
-      <div className="car-list-tab-search-container">
-        <div className="car-list-tabs">
+    <div>
+      <div className="car-list__tab__search__container">
+        <div className="car-list__tabs">
           <div>
             <button
               className={`${
-                selectedCarType === CarType.ALL_CARS ? "car-list-active-tab--btn" : ""
+                selectedCarType === CarType.ALL_CARS ? "car-list__tab--active" : ""
               }`}
               onClick={() => setSelectedCarType(CarType.ALL_CARS)}
             >
@@ -89,7 +89,7 @@ const CarList = (): JSX.Element => {
           <div>
             <button
               className={`${
-                selectedCarType === CarType.SEDAN ? "car-list-active-tab--btn" : ""
+                selectedCarType === CarType.SEDAN ? "car-list__tab--active" : ""
               }`}
               onClick={() => setSelectedCarType(CarType.SEDAN)}
             >
@@ -99,7 +99,7 @@ const CarList = (): JSX.Element => {
           <div>
             <button
               className={`${
-                selectedCarType === CarType.SUV ? "car-list-active-tab--btn" : ""
+                selectedCarType === CarType.SUV ? "car-list__tab--active" : ""
               }`}
               onClick={() => setSelectedCarType(CarType.SUV)}
             >
@@ -109,7 +109,7 @@ const CarList = (): JSX.Element => {
           <div>
             <button
               className={`${
-                selectedCarType === CarType.HATCHBACK ? "car-list-active-tab--btn" : ""
+                selectedCarType === CarType.HATCHBACK ? "car-list__tab--active" : ""
               }`}
               onClick={() => setSelectedCarType(CarType.HATCHBACK)}
             >
@@ -117,7 +117,7 @@ const CarList = (): JSX.Element => {
             </button>
           </div>
         </div>
-        <div className="car-list-form-container">
+        <div className="car-list__form__container">
           <form>
             <input
               type="text"
@@ -134,16 +134,16 @@ const CarList = (): JSX.Element => {
         </div>
       </div>
       {error !== null && (
-        <div className="car-list-error-msg">
+        <div className="car-list__error-msg">
           Something went wrong. Please try again later.
         </div>
       )}
       {cars?.length === 0 && (
-        <div className="car-list-error-msg">
+        <div className="car-list__error-msg">
           There are no cars meet your search criteria.
         </div>
       )}
-      <div className="car-list-grid">
+      <div className="car-list__grid">
         {cars?.map((car: CarDetails) => (
           <CarCard key={car.id} carData={car} />
         ))}
