@@ -1,0 +1,51 @@
+@import "../abstracts/colors";
+
+button {
+  background: none;
+  padding: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  border-radius: 0.25rem;
+  margin: 0.25rem;
+  height: min-content;
+  cursor: pointer;
+  font-size: medium;
+  box-shadow: 1px 2px 5px lightgray;
+  border: 0.5px solid lightgray;
+  font-size: smaller;
+}
+button:hover {
+  box-shadow: 1px 5px 10px lightgray;
+}
+button:disabled {
+  box-shadow: none;
+  border: none;
+  background-color: $default-button-disabled;   
+  cursor: default;
+}
+
+.button--red {
+  background-color: $primary-red;
+  color: white;
+}
+.button--red:hover {
+  box-shadow: 1px 5px 10px $primary-red-shadow;
+}
+.button--red:disabled {
+  background-color: $primary-red-disabled;
+  box-shadow: none;
+  border: none;
+}
+
+.button--dark {
+  background-color: $primary-black;
+  color: white;
+}
+.button--dark:hover {
+  box-shadow: 1px 5px 10px $primary-black-shadow;
+}
+.button--dark:disabled {
+  background-color: $primary-black-disabled;
+  box-shadow: none;
+  border: none;
+}
