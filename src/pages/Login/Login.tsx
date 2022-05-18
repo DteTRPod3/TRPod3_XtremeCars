@@ -42,10 +42,10 @@ const Login = () => {
   return (
     <div className="login">
       <h3>Login</h3>
-      <div className="login__box">
-        <div className="login__form">
+      <div className="login-box">
+        <div className="login-form">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="login__form-element">
+            <div className="login-form__input-element-group">
               <label htmlFor="email">Email Address</label>
               <input
                 type="email"
@@ -59,12 +59,15 @@ const Login = () => {
                 placeholder="Enter email"
               />
               {errors.email && (
-                <p className="login__text-danger" data-testid="email-error">
+                <p
+                  className="login__error-text--danger"
+                  data-testid="email-error"
+                >
                   {errors.email.message}
                 </p>
               )}
             </div>
-            <div className="login__form-element">
+            <div className="login-form__input-element-group">
               <label htmlFor="password">Password</label>
               <input
                 {...register("password", { required: "Password is required" })}
@@ -72,7 +75,10 @@ const Login = () => {
                 placeholder="Enter password"
               />
               {errors.password && (
-                <p className="login__text-danger" data-testid="password-error">
+                <p
+                  className="login__error-text--danger"
+                  data-testid="password-error"
+                >
                   {errors.password.message}
                 </p>
               )}

@@ -57,10 +57,10 @@ const SignUp = () => {
   return (
     <div className="signup">
       <h2>Sign Up</h2>
-      <div className="signup__box">
-        <div className="signup__form">
+      <div className="signup-box">
+        <div className="signup-form">
           <form onSubmit={handleSubmit(onSubmit)} autoComplete="false">
-            <div className="signup__form-element">
+            <div className="signup-form__input-element-group">
               <label htmlFor="name">Name</label>
               <input
                 type="text"
@@ -68,12 +68,15 @@ const SignUp = () => {
                 placeholder="Enter name..."
               />
               {errors.name && (
-                <p className="signup__text-danger" data-testid="name-error">
+                <p
+                  className="signup__error-text--danger"
+                  data-testid="name-error"
+                >
                   {errors.name.message}
                 </p>
               )}
             </div>
-            <div className="signup__form-element">
+            <div className="signup-form__input-element-group">
               <label htmlFor="Mobile Number">Mobile Number</label>
               <input
                 type="text"
@@ -91,12 +94,15 @@ const SignUp = () => {
                 placeholder="Enter contact..."
               />
               {errors.contact && (
-                <p className="signup__text-danger" data-testid="contact-error">
+                <p
+                  className="signup__error-text--danger"
+                  data-testid="contact-error"
+                >
                   {errors.contact.message}
                 </p>
               )}
             </div>
-            <div className="signup__form-element">
+            <div className="signup-form__input-element-group">
               <label htmlFor="address">Address</label>
               <input
                 type="text"
@@ -104,7 +110,7 @@ const SignUp = () => {
                 placeholder="Enter address..."
               />
             </div>
-            <div className="signup__form-element">
+            <div className="signup-form__input-element-group">
               <label htmlFor="pincode">PinCode</label>
               <input
                 type="text"
@@ -118,12 +124,15 @@ const SignUp = () => {
                 placeholder="Enter pincode..."
               />
               {errors.pincode && (
-                <p className="signup__text-danger" data-testid="pincode-error">
+                <p
+                  className="signup__error-text--danger"
+                  data-testid="pincode-error"
+                >
                   {errors.pincode.message}
                 </p>
               )}
             </div>
-            <div className="signup__form-element">
+            <div className="signup-form__input-element-group">
               <label htmlFor="email">Email Address</label>
               <input
                 type="email"
@@ -137,12 +146,15 @@ const SignUp = () => {
                 })}
               />
               {errors.email && (
-                <p className="signup__text-danger" data-testid="email-error">
+                <p
+                  className="signup__error-text--danger"
+                  data-testid="email-error"
+                >
                   {errors.email.message}
                 </p>
               )}
             </div>
-            <div className="signup__form-element">
+            <div className="signup-form__input-element-group">
               <label htmlFor="password">Password</label>
               <input
                 type="password"
@@ -169,13 +181,16 @@ const SignUp = () => {
                 placeholder="Enter password..."
               />
               {errors?.password?.types["required"] && (
-                <p className="signup__text-danger" data-testid="required-error">
+                <p
+                  className="signup__error-text--danger"
+                  data-testid="required-error"
+                >
                   {errors?.password?.types["required"]}
                 </p>
               )}
               {errors?.password?.types["lowercase"] && dirtyFields["password"] && (
                 <p
-                  className="signup__text-danger"
+                  className="signup__error-text--danger"
                   data-testid="lowercase-error"
                 >
                   {errors?.password?.types["lowercase"]}
@@ -184,7 +199,7 @@ const SignUp = () => {
               {!errors?.password?.types["lowercase"] &&
                 dirtyFields["password"] && (
                   <p
-                    className="signup__text-success"
+                    className="signup__text--success"
                     data-testid="password-success"
                   >
                     The password must contain one lower case letter
@@ -192,7 +207,7 @@ const SignUp = () => {
                 )}
               {errors?.password?.types["uppercase"] && dirtyFields["password"] && (
                 <p
-                  className="signup__text-danger"
+                  className="signup__error-text--danger"
                   data-testid="uppercase-error"
                 >
                   {errors?.password?.types["uppercase"]}
@@ -201,34 +216,40 @@ const SignUp = () => {
               {!errors?.password?.types["uppercase"] &&
                 dirtyFields["password"] && (
                   <p
-                    className="signup__text-success"
+                    className="signup__text--success"
                     data-testid="password-success"
                   >
                     The password must contain one upper case letter
                   </p>
                 )}
               {errors?.password?.types["minlength"] && dirtyFields["password"] && (
-                <p className="signup__text-danger" data-testid="address-error">
+                <p
+                  className="signup__error-text--danger"
+                  data-testid="address-error"
+                >
                   {errors?.password?.types["minlength"]}
                 </p>
               )}
               {!errors?.password?.types["minlength"] &&
                 dirtyFields["password"] && (
                   <p
-                    className="signup__text-success"
+                    className="signup__text--success"
                     data-testid="password-success"
                   >
                     The password length must be atleast 8
                   </p>
                 )}
               {errors?.password?.types["numbers"] && dirtyFields["password"] && (
-                <p className="signup__text-danger" data-testid="number-error">
+                <p
+                  className="signup__error-text--danger"
+                  data-testid="number-error"
+                >
                   {errors?.password?.types["numbers"]}
                 </p>
               )}
               {!errors?.password?.types["numbers"] && dirtyFields["password"] && (
                 <p
-                  className="signup__text-success"
+                  className="signup__text--success"
                   data-testid="password-success"
                 >
                   The password must contain a number
@@ -237,7 +258,7 @@ const SignUp = () => {
               {errors?.password?.types["specialCharacter"] &&
                 dirtyFields["password"] && (
                   <p
-                    className="signup__text-danger"
+                    className="signup__error-text--danger"
                     data-testid="character-error"
                   >
                     {errors?.password?.types["specialCharacter"]}
@@ -246,7 +267,7 @@ const SignUp = () => {
               {!errors?.password?.types["specialCharacter"] &&
                 dirtyFields["password"] && (
                   <p
-                    className="signup__text-success"
+                    className="signup__text--success"
                     data-testid="password-success"
                   >
                     The password must contain a special character (! @ # $ % & ?
@@ -255,7 +276,7 @@ const SignUp = () => {
                 )}
             </div>
 
-            <div className="signup__form-element">
+            <div className="signup-form__input-element-group">
               <label htmlFor="confirm-password">Re-enter the Password</label>
               <input
                 type="password"
@@ -267,14 +288,17 @@ const SignUp = () => {
                 placeholder="Re-enter the password..."
               />
               {errors.confirmpassword && (
-                <p className="signup__text-danger" data-testid="confirm-error">
+                <p
+                  className="signup__error-text--danger"
+                  data-testid="confirm-error"
+                >
                   {errors.confirmpassword.message}
                 </p>
               )}
               {!errors.confirmpassword &&
                 dirtyFields["password"] &&
                 dirtyFields["confirmpassword"] && (
-                  <p className="signup__text-success">Password match</p>
+                  <p className="signup__text--success">Password match</p>
                 )}
             </div>
 

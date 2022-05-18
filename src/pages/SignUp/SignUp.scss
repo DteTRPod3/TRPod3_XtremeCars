@@ -6,16 +6,16 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    .signup__text-danger{
+    .signup__error-text--danger{
         color: $primary-error-message
     }
     
-    .signup__text-success{
+    .signup__text--success{
         color:$primary-success-message
     }
 }
 
-.signup__box{
+.signup-box{
     padding: 1rem;
     
     width: 40rem;
@@ -24,7 +24,7 @@
     border-radius: 1%;
 }
 
-.signup__form-element{
+.signup-form__input-element-group{
     display: flex;
     flex-direction: column;
     gap: 0.2rem;

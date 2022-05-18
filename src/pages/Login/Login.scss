@@ -6,12 +6,12 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    .login__text-danger{
+    .login__error-text--danger{
         color: $primary-error-message
     }
 }
 
-.login__box{
+.login-box{
     padding: 1rem;
    
     width: 40rem;
@@ -21,7 +21,7 @@
    
 }
 
-.login__form-element{
+.login-form__input-element-group{
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
