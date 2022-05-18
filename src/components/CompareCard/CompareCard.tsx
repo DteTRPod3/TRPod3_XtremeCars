@@ -1,22 +1,34 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import "./CompareCard.scss"
+import { useDispatch, useSelector } from "react-redux";
 import { ICarComparisonDetails } from "../../models/ICarComparisonDetails";
+import { CarDetails } from "../../models/CarDetails";
 import { removeFromCompare } from "../../redux/CompareCars/reducer";
 import { removeCarDetailsData } from "../../redux/CompareCarsDetails/reducer";
+
 
 function CompareCard(props:any) {
   const carId = props.carId
   const car:ICarComparisonDetails = props.carsData
   const dispatch = useDispatch()
+  const allCars = useSelector((state: any) => state.carsListReducer.cars);
+  let carDetail:CarDetails[]=[]
   const removeCar = ()=>{
     dispatch(removeCarDetailsData(car.specifications.name))
     dispatch(removeFromCompare(carId))
   }
+  
+  if(allCars)
+    carDetail = allCars.filter((c:CarDetails)=>{
+        return c.id===carId
+    })
   return (
     <>
-      <header data-carId={carId}>
+      <div data-carId={carId}>
         <h3>{car.specifications.name}</h3>
-      </header>
+      </div>
+      <div className="compare-cars__image-container">
+        <img src={carDetail[0].image} alt="car"/>
+      </div>
       <div>
         <p>{car.specifications.fuel_type}</p>
       </div>
@@ -36,7 +48,7 @@ function CompareCard(props:any) {
         <p>{car.cost}</p>
       </div>
       <div>
-          <button onClick={removeCar}>Remove</button>
+          <button onClick={removeCar}  className="button--red">Remove</button>
       </div>
     </>
   );
