@@ -54,13 +54,13 @@ const CarList = (): JSX.Element => {
 
   useEffect(() => {
     if (selectedCarType != "" && searchStr != "") {
-      navigate(`?car-type=${selectedCarType}&search=${searchStr}`);
+      navigate(`?car-type=${selectedCarType}&search=${searchStr}`, {replace: true});
     } else if (selectedCarType != "") {
-      navigate(`?car-type=${selectedCarType}`);
+      navigate(`?car-type=${selectedCarType}` , {replace: true});
     } else if (searchStr != "") {
-      navigate(`?search=${searchStr}`);
+      navigate(`?search=${searchStr}` , {replace: true});
     } else {
-      navigate("/");
+      navigate("/", {replace: true});
     }
     dispatch(updateLoadState());
     getRequest(`${API_URL}cars/${selectedCarType}?search=${searchStr}`)
@@ -74,12 +74,12 @@ const CarList = (): JSX.Element => {
 
   return (
     <div className="car-list-container">
-      <div className="car-list-tab-search">
-        <div className="car-list-btn-group">
+      <div className="car-list-tab-search-container">
+        <div className="car-list-tabs">
           <div>
             <button
               className={`${
-                selectedCarType === CarType.ALL_CARS ? "active-tab" : ""
+                selectedCarType === CarType.ALL_CARS ? "car-list-active-tab--btn" : ""
               }`}
               onClick={() => setSelectedCarType(CarType.ALL_CARS)}
             >
@@ -89,7 +89,7 @@ const CarList = (): JSX.Element => {
           <div>
             <button
               className={`${
-                selectedCarType === CarType.SEDAN ? "active-tab" : ""
+                selectedCarType === CarType.SEDAN ? "car-list-active-tab--btn" : ""
               }`}
               onClick={() => setSelectedCarType(CarType.SEDAN)}
             >
@@ -99,7 +99,7 @@ const CarList = (): JSX.Element => {
           <div>
             <button
               className={`${
-                selectedCarType === CarType.SUV ? "active-tab" : ""
+                selectedCarType === CarType.SUV ? "car-list-active-tab--btn" : ""
               }`}
               onClick={() => setSelectedCarType(CarType.SUV)}
             >
@@ -109,7 +109,7 @@ const CarList = (): JSX.Element => {
           <div>
             <button
               className={`${
-                selectedCarType === CarType.HATCHBACK ? "active-tab" : ""
+                selectedCarType === CarType.HATCHBACK ? "car-list-active-tab--btn" : ""
               }`}
               onClick={() => setSelectedCarType(CarType.HATCHBACK)}
             >
@@ -117,7 +117,7 @@ const CarList = (): JSX.Element => {
             </button>
           </div>
         </div>
-        <div className="car-list-form">
+        <div className="car-list-form-container">
           <form>
             <input
               type="text"
@@ -129,17 +129,17 @@ const CarList = (): JSX.Element => {
                 setSearchStr(event.target.value)
               }
             />
-            <button type="button">Search</button>
+            <button type="button">search</button>
           </form>
         </div>
       </div>
       {error !== null && (
-        <div className="car-list-error">
+        <div className="car-list-error-msg">
           Something went wrong. Please try again later.
         </div>
       )}
       {cars?.length === 0 && (
-        <div className="car-list-error">
+        <div className="car-list-error-msg">
           There are no cars meet your search criteria.
         </div>
       )}

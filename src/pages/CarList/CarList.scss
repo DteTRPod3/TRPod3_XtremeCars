@@ -1,8 +1,10 @@
-.car-list-btn-group {
+@import "../../stylesheets/base/typography";
+
+.car-list-tabs {
   display: flex;
   button {
     border: 0;
-    width: clamp(5rem, 15vw, 10rem);
+    width: clamp(5rem, 15vw, 15rem);
     padding: 0.5rem;
     cursor: pointer;
     transition: 0.2s all;
@@ -13,28 +15,30 @@
     box-shadow: none;
     transform: scale(1.1);
   }
-  .active-tab {
+  .car-list-active-tab--btn {
     background-color: #000;
     color: #fff;
     box-shadow: none;
   }
 }
 
-.car-list-tab-search {
+.car-list-tab-search-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 2rem 1rem 1rem 1rem;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .car-list-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.car-list-form {
+.car-list-form-container {
   input {
     padding: 0.5rem;
   }
@@ -52,9 +56,26 @@
   }
 }
 
-.car-list-error {
+.car-list-error-msg {
     height: 20rem;    
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media(min-width:$breakpoint-desktop-screen) {
+  .car-list-grid{
+    width: 40%;
+  }
+}
+@media(min-width:$breakpoint-tablet-screen) {
+  .car-list-grid{
+    width: 65%;
+  }
+}
+
+@media(min-width:$breakpoint-mobile-screen) {
+  .car-list-grid{
+    width: 84%;
+  }
 }
