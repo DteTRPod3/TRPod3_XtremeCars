@@ -51,18 +51,18 @@ const CarCard = (props: { carData: CarDetails }) => {
 
   return (
     <div className="card">
-      <img className="card-img" src={car.image} alt="car-img" />
-      <div className="card-body">
+      <img className="card__img" src={car.image} alt="car-img" />
+      <div className="card__body">
         <div>
           <div>
             <h6> {car.name}</h6>
           </div>
-          <div className="card-price-container">
+          <div className="card-price__container">
             <p>{car.price}akh onwards</p>
             <img src={rightarrow} alt="detail" />
           </div>
         </div>
-        <div className="card-btn-group">
+        <div className="card__btn-group">
           <button onClick={() => dispatch(addToCart(car))} title="Add to Card"><img className="card-btn" src={cart} style={{strokeWidth:"6"}}/></button>
           <button onClick={wishListHandler} title="Add to Wishlist"><img className="card-btn"  src={(wishListStatus === undefined) ? heart : heartFill} /></button>
           <button onClick={addToCompareCars} disabled={disable} title="Add to Compare Card"><img className="card-btn-compare" style={{opacity: (disable) ? 0.3 : 1}} src={compare}/></button>

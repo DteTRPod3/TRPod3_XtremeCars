@@ -1,7 +1,7 @@
 @import "../../stylesheets/base/font";
 @import "../../stylesheets/abstracts/colors";
 
-.card-price-container {
+.card-price__container {
   display: flex;
   justify-content: space-between;
   margin: 0.5rem 0;
@@ -10,7 +10,7 @@
   color: rgba(0, 0, 0, 0.6);
 }
 
-.card-body {
+.card__body {
   padding: 1rem;
 }
 
@@ -31,7 +31,7 @@
   }
 }
 
-.card-img {
+.card__img {
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
   height: 12.5rem;
@@ -44,7 +44,7 @@
   cursor: pointer;
 }
 
-.card-btn-group {
+.card__btn-group {
   display: flex;
   gap: 0.5rem;
   button {
