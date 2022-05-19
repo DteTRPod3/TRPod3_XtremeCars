@@ -1,18 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { API_URL } from "../../constants";
-import { login, userError } from "../../redux/Authentication/reducer";
+import { API_URL, emailpattern } from "../../constants";
+import { login, userError } from "../../redux/authentication/reducer";
 import { postRequest } from "../../requests/apiRequest";
 import "./Login.scss";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const USERNAME = "Hasher";
-  const PASSWORD = "L#(qc{f}TaJu4%4k";
-  const [formData, setFormData] = useState({ email: "", password: "" });
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: "onChange",
+    reValidateMode: "onChange",
+    criteriaMode: "all",
+  });
+
+  const onSubmit = (formData: any) => {
     const response = postRequest(`${API_URL}users/login`, formData);
     response
       .then((data) => {
@@ -30,46 +38,55 @@ const Login = () => {
         window.alert("error");
       });
   };
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
-
-    setFormData((prevFormData: any) => {
-      return { ...prevFormData, [name]: value };
-    });
-  };
 
   return (
     <div className="login">
       <h3>Login</h3>
       <div className="login-box">
         <div className="login-form">
-          <form onSubmit={handleSubmit}>
-            <div className="login-form-element">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="login-form__input-element-group">
               <label htmlFor="email">Email Address</label>
               <input
-                onChange={handleChange}
                 type="email"
-                name="email"
-                value={formData.email}
-                required
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: emailpattern,
+                    message: "Enter a valid email address",
+                  },
+                })}
                 placeholder="Enter email"
               />
+              {errors.email && (
+                <p
+                  className="login__error-text--danger"
+                  data-testid="email-error"
+                >
+                  {errors.email.message}
+                </p>
+              )}
             </div>
-            <div className="login-form-element">
+            <div className="login-form__input-element-group">
               <label htmlFor="password">Password</label>
               <input
-                onChange={handleChange}
-                name="password"
+                {...register("password", { required: "Password is required" })}
                 type="password"
-                value={formData.password}
-                required
                 placeholder="Enter password"
               />
+              {errors.password && (
+                <p
+                  className="login__error-text--danger"
+                  data-testid="password-error"
+                >
+                  {errors.password.message}
+                </p>
+              )}
             </div>
 
             <Link to="/signup">New User? Register Now</Link>
-            <div className="login-button">
-              <button type="submit" value="Submit">
+            <div className="login__button">
+              <button className="button--red" type="submit" value="Submit">
                 Login
               </button>
             </div>

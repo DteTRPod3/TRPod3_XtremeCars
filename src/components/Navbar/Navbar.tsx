@@ -1,15 +1,15 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-
-import Logo from "../../assets/logo.svg";
-import loggedProfile from "../../assets/man.png";
 import cartImage from "../../assets/cartImage.svg";
 import wishlist from "../../assets/heart.svg";
+import Logo from "../../assets/logo.svg";
+import loggedProfile from "../../assets/man.png";
 import UnknownProfile from "../../assets/profile.svg";
-import { logout } from "../../redux/Authentication/reducer";
-import "./Navbar.scss";
+import { logout } from "../../redux/authentication/reducer";
 import { RootState } from "../../redux/store";
+import "./Navbar.scss";
+
 const Navbar = () => {
   const wishCars = useSelector(
     (state: RootState) => state.wishListReducer.wishList

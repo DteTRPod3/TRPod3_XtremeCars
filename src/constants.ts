@@ -1,4 +1,12 @@
 export const API_URL = "http://localhost:8080/";
 export const USERNAME = "Hasher";
 export const PASSWORD = "L#(qc{f}TaJu4%4k";
-export const NUMBER_OF_CARS_TO_COMPARE = 2
+export const NUMBER_OF_CARS_TO_COMPARE = 2;
+export const contactpattern = /[6-9]{1}[0-9]{9}/;
+export const emailpattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+export const capitalLetterPattern = /[A-Z]/;
+export const lowerLetterPattern = /[a-z]/;
+export const numbersPattern = /[0-9]/;
+export const specialCharacterPattern = /[!@#$%&?/:;"'.,]/;
+export const mobilePattern = /^[6-9]\d{9}$/;
+export const pincodePattern = /^[1-9][0-9]{5}$/;

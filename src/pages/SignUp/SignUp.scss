@@ -1,3 +1,4 @@
+@import"../../stylesheets/abstracts/colors";
 .signup{
     padding-top: 1rem;
     display: flex;
@@ -5,28 +6,40 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    .signup__error-text--danger{
+        color: $primary-error-message
+    }
+    
+    .signup__text--success{
+        color:$primary-success-message
+    }
 }
 
 .signup-box{
     padding: 1rem;
-    height: 30rem;
+    
     width: 40rem;
-    border: 1px solid black;
-    background-color: skyblue;
+    border: 1px solid $border-color;
+    
     border-radius: 1%;
 }
 
-.signup-form-element{
+.signup-form__input-element-group{
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
     input{
         width: 60%;
+        height: 2rem;
+        border-radius: 0.25rem;
+        border: 1px solid $border-color;
     }
     padding: 0.4rem 0;
 }
 
-.signup-button{
+.signup__button{
     margin-top: 1rem;
 }
+
+
 

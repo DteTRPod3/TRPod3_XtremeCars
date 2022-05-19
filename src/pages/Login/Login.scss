@@ -1,3 +1,4 @@
+@import"../../stylesheets/abstracts/colors";
 .login{
     padding-top: 1rem;
     display: flex;
@@ -5,28 +6,36 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    .login__error-text--danger{
+        color: $primary-error-message
+    }
 }
 
 .login-box{
     padding: 1rem;
-    height: 30rem;
+   
     width: 40rem;
-    border: 1px solid black;
-    background-color: skyblue;
-    border-radius: 1%;
+    border: 1px solid $border-color;
+    border-radius: 0.25rem;
+   
+   
 }
 
-.login-form-element{
+.login-form__input-element-group{
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
     input{
         width: 60%;
+        border-radius: 0.25rem;
+        border: 1px solid $border-color;
+        height: 2rem;
     }
     padding: 0.4rem 0;
 }
 
-.login-button{
+.login__button{
     margin-top: 1rem;
+  
 }
 
