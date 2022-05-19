@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./CarCard.scss";
 import rightarrow from "../../assets/rightArrow.svg";
 import { CarDetails } from "../../models/CarDetails";
-import  heart  from "../../assets/heart.svg";
+import  heart  from "../../assets/heartForCard.svg";
 import  heartFill  from "../../assets/heart-fill.svg";
 import  cart  from "../../assets/cartImageForCard.svg";
 import compare from "../../assets/compare.svg";
@@ -63,9 +63,9 @@ const CarCard = (props: { carData: CarDetails }) => {
           </div>
         </div>
         <div className="card__btn-group">
-          <button onClick={() => dispatch(addToCart(car))} title="Add to Card"><img className="card-btn" src={cart} style={{strokeWidth:"6"}}/></button>
+          <button onClick={() => dispatch(addToCart(car))} title="Add to Card"><img className="card-btn" src={cart}/></button>
           <button onClick={wishListHandler} title="Add to Wishlist"><img className="card-btn"  src={(wishListStatus === undefined) ? heart : heartFill} /></button>
-          <button onClick={addToCompareCars} disabled={disable} title="Add to Compare Card"><img className="card-btn-compare" style={{opacity: (disable) ? 0.3 : 1}} src={compare}/></button>
+          <button onClick={addToCompareCars} disabled={disable} title="Add to Compare Card"><img className="card-btn" style={{opacity: (disable) ? 0.3 : 1}} src={compare}/></button>
         </div>
       </div>
     </div>

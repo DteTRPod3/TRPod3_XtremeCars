@@ -1,11 +1,12 @@
 @charset "UTF-8";
 
 // 1. Configuration and helpers
-@import
-  '../src/stylesheets/abstracts/colors';
+@import "../src/stylesheets/abstracts/colors";
 
 // 3. Base stuff
-@import
-  '../src/stylesheets/base/font',
-  '../src/stylesheets/base/reset',
-  '../src/stylesheets/base/typography';
+@import "../src/stylesheets/base/font", "../src/stylesheets/base/reset",
+  "../src/stylesheets/base/typography";
+
+//components
+
+@import "./stylesheets/components/button";
