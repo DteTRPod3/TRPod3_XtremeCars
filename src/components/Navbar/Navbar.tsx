@@ -91,15 +91,17 @@ const Navbar = () => {
             src={profilepicture}
             alt="Profile pic"
           />
+        </div>
+        <div className="nav-bar-profile-div__item">
+          {user?.isAuthenticated && (
+            <span>{user?.user?.name.toLocaleUpperCase()}</span>
+          )}
+        </div>
+        <div className="nav-bar-profile-div__item">
           {user?.isAuthenticated === false && (
             <NavLink to="/login" className="nav-link">
               <button>Login/Signup</button>
             </NavLink>
-          )}
-          {user?.isAuthenticated && (
-            <span className="nav-bar-profile-div__item">
-              {user?.user?.name.toLocaleUpperCase()}
-            </span>
           )}
         </div>
 
