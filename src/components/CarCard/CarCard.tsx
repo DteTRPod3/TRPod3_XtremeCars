@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./CarCard.scss";
 import rightarrow from "../../assets/rightArrow.svg";
 import { CarDetails } from "../../models/CarDetails";
-
+import  heart  from "../../assets/heartForCard.svg";
+import  heartFill  from "../../assets/heart-fill.svg";
+import  cart  from "../../assets/cartImageForCard.svg";
+import compare from "../../assets/compare.svg";
 import { addToCompare } from "../../redux/CompareCars/reducer";
 import { NUMBER_OF_CARS_TO_COMPARE } from "../../constants";
 import { addToCart } from "../../redux/Cart/CartSlice";
@@ -47,36 +50,23 @@ const CarCard = (props: { carData: CarDetails }) => {
   }, [compareCarsIds.length]);
 
   return (
-    <div className="car-card-main">
-      <img className="car-card-car-image" src={car.image} alt="car-img" />
-      <div className="car-card-data">
+    <div className="card">
+      <img className="card__img" src={car.image} alt="car-img" />
+      <div className="card__body">
         <div>
-          <h6> {car.name}</h6>
-          <p>{car.price} akh onwards</p>
+          <div>
+            <h6> {car.name}</h6>
+          </div>
+          <div className="card-price__container">
+            <p>{car.price}akh onwards</p>
+            <img src={rightarrow} alt="detail" />
+          </div>
         </div>
-        <div>
-          <img src={rightarrow} alt="detail" />
+        <div className="card__btn-group">
+          <button onClick={() => dispatch(addToCart(car))} title="Add to Card"><img className="card-btn" src={cart}/></button>
+          <button onClick={wishListHandler} title="Add to Wishlist"><img className="card-btn"  src={(wishListStatus === undefined) ? heart : heartFill} /></button>
+          <button onClick={addToCompareCars} disabled={disable} title="Add to Compare Card"><img className="card-btn" style={{opacity: (disable) ? 0.3 : 1}} src={compare}/></button>
         </div>
-      </div>
-      <div className="car-card-btn-group">
-        <button
-          className="car-card-btn"
-          onClick={() => dispatch(addToCart(car))}
-        >
-          Add to cart
-        </button>
-        <button className="car-card-btn" onClick={wishListHandler}>
-          {wishListStatus === undefined
-            ? "Add to WishList"
-            : "Remove from Wishlist"}
-        </button>
-        <button
-          className="car-card-btn"
-          onClick={addToCompareCars}
-          disabled={disable}
-        >
-          Add to compare
-        </button>
       </div>
     </div>
   );
